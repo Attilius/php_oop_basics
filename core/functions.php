@@ -25,7 +25,7 @@ function logMessage($level, $message){
 }
 
 function errorPage(){
-    include "templates/error.php";
+    include "../templates/error.php";
     die();
 }
 
@@ -69,29 +69,6 @@ function paginate($total, $currentPage, $size): string {
     }
 
     return $markup;
-}
-
-$routes = [];
-
-function route($action, $callable, $method = "GET"){
-    global $routes;
-    $pattern = "%^$action$%";
-    $routes[strtoupper($method)][$pattern] = $callable;
-}
-
-function dispatch($action, $notFound){
-    global $routes;
-    $method = $_SERVER['REQUEST_METHOD'];
-    if (array_key_exists($method, $routes)){
-        foreach ($routes[$method] as $pattern => $callable) {
-            if (preg_match($pattern, $action, $matches)){
-                return $callable($matches);
-
-            }
-        }
-    }
-
-    return $notFound();
 }
 
 function getConnection(){
@@ -164,7 +141,6 @@ function getImageById($connection, $id){
         $result = mysqli_stmt_get_result($statement);
         $row = mysqli_fetch_assoc($result);
         return new Photo($row['id'], $row['title'], $row['thumbnail'], $row['url']);
-
     }
     else
     {
