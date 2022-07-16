@@ -11,13 +11,17 @@ class Application
     }
 
     public function start(string $basePath){
-        $this->container->put("basePath", $basePath);
-        ob_start();
-        $uri = $_SERVER['REQUEST_URI'];
-        $cleand = explode("?", $uri)[0];
-        $controllerResult = $this->container->get('dispatcher')->dispatch($cleand);
-        //$data['user'] = createUser();
-        $response = $this->container->get('responseFactory')->createResponse($controllerResult);
-        $this->container->get('responseEmitter')->emit($response);
+        try {
+            $this->container->put("basePath", $basePath);
+            ob_start();
+            $response = $this->container
+                ->get("pipeline")
+                ->pipe($this->container->get("request"), new Response("", [], 200, "OK"));
+            $this->container->get('responseEmitter')->emit($response);
+        } catch (\Exception $e){
+            logMessage('ERROR', $e->getMessage());
+            die("Critical error occured during page load. Please try again later.");
+        }
+
     }
 }
