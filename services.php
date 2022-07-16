@@ -1,5 +1,20 @@
 <?php
 
+use Controllers\HomeController;
+use Controllers\LoginFormController;
+use Controllers\LoginSubmitController;
+use Controllers\LogoutSubmitController;
+use Controllers\NotFoundController;
+use Controllers\SingleImageController;
+use Controllers\SingleImageDeleteController;
+use Controllers\SingleImageEditController;
+use Exception\SqlException;
+use Middleware\AuthorizationMiddleware;
+use Middleware\DispatchingMiddleware;
+use Middleware\MiddlewareStack;
+use Services\AuthService;
+use Services\PhotoService;
+
 return [
     "responseFactory" => function(ServiceContainer $container){
         return new ResponseFactory($container->get("viewRenderer"));
@@ -10,29 +25,59 @@ return [
     "responseEmitter" => function(){
         return new ResponseEmitter();
     },
-    "homeController" => function(){
-        return new Controllers\HomeController();
+    "homeController" => function(ServiceContainer $container){
+        return new HomeController($container->get("photoService"));
     },
-    "singleImageController" => function(){
-        return new Controllers\SingleImageController();
+    "config" => function(ServiceContainer $container){
+        $base = $container->get("basePath");
+        return include_once $base."/config.php";
     },
-    "singleImageEditController" => function(){
-        return new Controllers\SingleImageEditController();
+    "connection" => function(ServiceContainer $container){
+        $config = $container->get("config");
+        $connection = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+        if (!$connection) {
+            throw new SqlException('Connection error: ' . mysqli_error($connection));
+        }
+
+        return $connection;
     },
-    "singleImageDeleteController" => function(){
-        return new Controllers\SingleImageDeleteController();
+    "photoService" => function(ServiceContainer $container){
+        return new PhotoService($container->get("connection"));
+    },
+    "authService" => function(ServiceContainer $container){
+        return new AuthService($container->get("connection"));
+    },
+    "singleImageController" => function(ServiceContainer $container){
+        return new SingleImageController($container->get("photoService"));
+    },
+    "singleImageEditController" => function(ServiceContainer $container){
+        return new SingleImageEditController($container->get("photoService"));
+    },
+    "singleImageDeleteController" => function(ServiceContainer $container){
+        return new SingleImageDeleteController($container->get("photoService"));
     },
     "loginFormController" => function(){
-        return new Controllers\LoginFormController();
+        return new LoginFormController();
     },
-    "loginSubmitController" => function(){
-        return new Controllers\LoginSubmitController();
+    "loginSubmitController" => function(ServiceContainer $container){
+        return new LoginSubmitController($container->get("authService"));
     },
-    "logoutSubmitController" => function(){
-        return new Controllers\LogoutSubmitController();
+    "logoutSubmitController" => function(ServiceContainer $container){
+        return new LogoutSubmitController($container->get("authService"));
     },
     "notFoundController" => function(){
-        return new Controllers\NotFoundController();
+        return new NotFoundController();
+    },
+    "request" => function(){
+        return new Request($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"], "", getallheaders(), $_COOKIE, $_POST);
+    },
+    "pipeline" => function(ServiceContainer $container){
+        $pipeLine = new MiddlewareStack();
+        $authMiddleware = new AuthorizationMiddleware(["/"], $container->get("authService"), "/login");
+        $dispatcherMiddleware = new DispatchingMiddleware($container->get("dispatcher"), $container->get("responseFactory"));
+        $pipeLine->addMiddleware($authMiddleware);
+        $pipeLine->addMiddleware($dispatcherMiddleware); // Ez az utolsó a (stack)-ben
+        return $pipeLine;
     },
     "dispatcher" => function(ServiceContainer $container){
         $dispatcher = new Dispatcher($container,'notFoundController@handle');
