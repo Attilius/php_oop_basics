@@ -2,15 +2,15 @@
 
 class Application
 {
-    private $container;
-
+    private ServiceContainer $container;
 
     public function __construct(ServiceContainer $container)
     {
         $this->container = $container;
     }
 
-    public function start(string $basePath){
+    public function start(string $basePath)
+    {
         try {
             $this->container->put("basePath", $basePath);
             ob_start();
@@ -22,6 +22,5 @@ class Application
             logMessage('ERROR', $e->getMessage());
             die("Critical error occured during page load. Please try again later.");
         }
-
     }
 }
