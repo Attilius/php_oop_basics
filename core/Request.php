@@ -1,15 +1,18 @@
 <?php
 
+use Session\SessionInterface;
+
 class Request
 {
-    private $body;
-    private $headers;
-    private $cookies;
-    private $params;
-    private $uri;
-    private $method;
+    private string $body;
+    private array $headers;
+    private array $cookies;
+    private array $params;
+    private string $uri;
+    private string $method;
+    private SessionInterface $session;
 
-    public function __construct($uri, $method, $body = null, $headers = [], $cookies = [], $params = [])
+    public function __construct(string $uri, string $method, SessionInterface $session, string $body = null, array $headers = [], array $cookies = [], array $params = [])
     {
         $this->body = $body;
         $this->method = $method;
@@ -17,54 +20,62 @@ class Request
         $this->cookies = $cookies;
         $this->params = $params;
         $this->uri = $uri;
+        $this->session = $session;
     }
 
     /**
-     * @return mixed|null
+     * @return string|null
      */
-    public function getBody()
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
     /**
-     * @return array|mixed
+     * @return array
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headers;
     }
 
     /**
-     * @return array|mixed
+     * @return array
      */
-    public function getCookies()
+    public function getCookies(): array
     {
         return $this->cookies;
     }
 
     /**
-     * @return array|mixed
+     * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUri()
+    public function getUri(): string
     {
         return $this->uri;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
 
+    /**
+     * @return SessionInterface
+     */
+    public function getSession(): SessionInterface
+    {
+        return $this->session;
+    }
 }
