@@ -1,14 +1,13 @@
 <?php
 
-use Controllers\NotFoundController;
 
 class Dispatcher
 {
-    private NotFoundController $notFoundController;
+    private $notFoundController;
     private ServiceContainer $container;
     private array $routes = [];
 
-    public function __construct(ServiceContainer $container, NotFoundController $notFoundController)
+    public function __construct(ServiceContainer $container, $notFoundController)
     {
         $this->notFoundController = $notFoundController;
         $this->container = $container;
