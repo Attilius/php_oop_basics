@@ -61,7 +61,7 @@ class ForgotPasswordService
     private function createForgotPasswordToken($email)
     {
         $token = hash("sha256", uniqid(time(), true));
-        $this->deleteTokensForEmail();
+        $this->deleteTokensForEmail($email);
         $this->addToken($email, $token);
         return $token;
     }
@@ -78,7 +78,7 @@ class ForgotPasswordService
         $this->mailer->send($message);
     }
 
-    private function deleteTokensForEmail()
+    private function deleteTokensForEmail($email)
     {
         if ($statement = $this->connection->prepare("DELETE FROM password_reset WHERE email = ?")){
             $statement->bind_param("s", $email);
@@ -99,11 +99,25 @@ class ForgotPasswordService
         }
     }
 
+    private function getEmailWithToken($token)
+    {
+       if ($statement = $this->connection->prepare("SELECT email FROM password_reset WHERE token = ?")) {
+           $statement->bind_param("s", $token);
+           $statement->execute();
+           $result = $statement->get_result();
+           $record = $result->fetch_assoc();
+           return $record["email"];
+       } else {
+           throw new SqlException($this->connection->error);
+       }
+    }
+
     public function updatePassword($token, $password)
     {
-        if ($statement = $this->connection->prepare("UPDATE users SET password = ? WHERE email = (SELECT email FROM password_reset WHERE token = ?)")){
+        if ($statement = $this->connection->prepare("UPDATE users SET password = ? WHERE email = ?")){
+            $email = $this->getEmailWithToken($token);
             $hash = password_hash($password, PASSWORD_BCRYPT);
-            $statement->bind_param("ss", $hash, $token);
+            $statement->bind_param("ss", $hash, $email);
             $statement->execute();
         } else {
             throw new SqlException($this->connection->error);
