@@ -11,7 +11,7 @@
                     The password and the confirmation should match and the password length should be at least 8 characters.
                 </div>
             <?php endif; ?>
-            <input type="hidden" value="<?= $token ?>">
+            <input type="hidden" name="token" value="<?= $token ?>"/>
             <div class="form-group">
                 <label for="password">New password</label>
                 <input type="password" class="form-control" name="password" id="password">
