@@ -96,7 +96,7 @@ return [
         return SessionFactory::build($sessionConfig["driver"], $sessionConfig["config"]);
     },
     "request" => function(ServiceContainer $container){
-        return new Request($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"], $container->get("session"), file_get_contents("php://input"), getallheaders(), $_COOKIE, array_merge($_GET, $_POST) );
+        return new Request($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"], $container->get("session"), file_get_contents("php://input"), getallheaders(), $_COOKIE, array_merge($_GET, $_POST));
     },
     "mailer" => function(ServiceContainer $container){
         $mailerConfig = $container->get("config")["mail"];
