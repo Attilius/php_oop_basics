@@ -124,7 +124,6 @@ return [
         $dispatcher = new Dispatcher($container,'notFoundController@handle');
 
         $dispatcher->addRoute('/', 'homeController@handle');
-        $dispatcher->addRoute('/about', 'aboutController');
         $dispatcher->addRoute('/image/(?<id>[\d]+)', 'singleImageController@display');
         $dispatcher->addRoute('/image/(?<id>[\d]+)/edit', 'singleImageEditController@edit', 'POST');
         $dispatcher->addRoute('/image/(?<id>[\d]+)/delete', 'singleImageDeleteController@delete', 'POST');
