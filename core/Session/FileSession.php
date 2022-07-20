@@ -6,7 +6,7 @@ class FileSession implements SessionInterface
 {
 
     private string $fileName;
-    private array $data;
+    private $data;
 
     public function __construct(array $config)
     {
