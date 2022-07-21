@@ -13,6 +13,7 @@
                 <?php endforeach; ?>
             </select>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/image/add" class="btn btn-success">Add image</a>
         </div>
     </form>
     <?php require "pagination.php"; ?>
