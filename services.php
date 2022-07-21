@@ -1,21 +1,27 @@
 <?php
 
-use Controllers\ForgotPasswordController;
-use Controllers\ForgotPasswordSubmitController;
-use Controllers\HomeController;
-use Controllers\LoginFormController;
-use Controllers\LoginSubmitController;
-use Controllers\LogoutSubmitController;
+use Controllers\Auth\LoginFormController;
+use Controllers\Auth\LoginSubmitController;
+use Controllers\Auth\LogoutSubmitController;
+use Controllers\ForgotPassword\ForgotPasswordController;
+use Controllers\ForgotPassword\ForgotPasswordSubmitController;
+use Controllers\ForgotPassword\PasswordResetController;
+use Controllers\ForgotPassword\PasswordResetSubmitController;
+use Controllers\Image\HomeController;
+use Controllers\Image\ImageCreateFormController;
+use Controllers\Image\ImageCreateSubmitController;
+use Controllers\Image\SingleImageController;
+use Controllers\Image\SingleImageDeleteController;
+use Controllers\Image\SingleImageEditController;
 use Controllers\NotFoundController;
-use Controllers\PasswordResetController;
-use Controllers\PasswordResetSubmitController;
-use Controllers\SingleImageController;
-use Controllers\SingleImageDeleteController;
-use Controllers\SingleImageEditController;
 use Exception\SqlException;
 use Middleware\AuthorizationMiddleware;
 use Middleware\DispatchingMiddleware;
 use Middleware\MiddlewareStack;
+use Request\Request;
+use Request\RequestFactory;
+use Response\ResponseEmitter;
+use Response\ResponseFactory;
 use Services\AuthService;
 use Services\ForgotPasswordService;
 use Services\PhotoService;
@@ -91,12 +97,18 @@ return [
     "notFoundController" => function(){
         return new NotFoundController();
     },
+    "imageCreateFormController" => function(){
+        return new ImageCreateFormController();
+    },
+    "imageCreateSubmitController" => function(ServiceContainer $container){
+        return new ImageCreateSubmitController($container->get("basePath"), $container->get("request"));
+    },
     "session" => function(ServiceContainer $container){
         $sessionConfig = $container->get("config")["session"];
         return SessionFactory::build($sessionConfig["driver"], $sessionConfig["config"]);
     },
     "request" => function(ServiceContainer $container){
-        return new Request($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"], $container->get("session"), file_get_contents("php://input"), getallheaders(), $_COOKIE, array_merge($_GET, $_POST));
+        return RequestFactory::createFromGlobals($container);
     },
     "mailer" => function(ServiceContainer $container){
         $mailerConfig = $container->get("config")["mail"];
@@ -136,7 +148,8 @@ return [
         $dispatcher->addRoute('/forgotpass', 'forgotPasswordSubmitController@submit','POST');
         $dispatcher->addRoute('/reset', 'passwordResetController@show');
         $dispatcher->addRoute('/reset', 'passwordResetSubmitController@submit','POST');
-
+        $dispatcher->addRoute('/image/add', 'imageCreateFormController@show');
+        $dispatcher->addRoute('/image/add', 'imageCreateSubmitController@submit','POST');
         return $dispatcher;
     }
 ];
