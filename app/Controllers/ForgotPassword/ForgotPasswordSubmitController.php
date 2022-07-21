@@ -1,8 +1,8 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\ForgotPassword;
 
-use Request;
+use Request\Request;
 use Services\ForgotPasswordService;
 
 class ForgotPasswordSubmitController
