@@ -1,5 +1,6 @@
 <?php
 
+use Request\Request;
 
 class Dispatcher
 {
