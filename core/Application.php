@@ -1,5 +1,7 @@
 <?php
 
+use Response\Response;
+
 class Application
 {
     private ServiceContainer $container;
