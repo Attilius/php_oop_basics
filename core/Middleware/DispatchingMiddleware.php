@@ -3,9 +3,9 @@
 namespace Middleware;
 
 use Dispatcher;
-use Request;
-use Response;
-use ResponseFactory;
+use Request\Request;
+use Response\Response;
+use Response\ResponseFactory;
 
 class DispatchingMiddleware implements MiddlewareInterface
 {
