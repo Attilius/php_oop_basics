@@ -21,6 +21,6 @@ class DispatchingMiddleware implements MiddlewareInterface
     public function process(Request $request, Response $response, callable $next)
     {
         $controllerResult = $this->dispatcher->dispatch($request);
-        return $this->responseFactory->createResponse($controllerResult, $request->getSession()->toArray());
+        return $this->responseFactory->createResponse($controllerResult, $request);
     }
 }
