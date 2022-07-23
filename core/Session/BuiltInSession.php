@@ -2,10 +2,8 @@
 
 namespace Session;
 
-
 class BuiltInSession implements SessionInterface
 {
-
     public function has($key)
     {
         return array_key_exists($key, $_SESSION);
@@ -34,5 +32,10 @@ class BuiltInSession implements SessionInterface
     public function toArray()
     {
         return $_SESSION;
+    }
+
+    public function flash()
+    {
+        return new Flash($this);
     }
 }
