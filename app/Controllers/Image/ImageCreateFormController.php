@@ -15,8 +15,7 @@ class ImageCreateFormController
 
     public function show()
     {
-        $violations = $this->session->get("violations");
-        $this->session->remove("violations");
+        $violations = $this->session->flash()->get("violations");
         return [
             "add",
             [
