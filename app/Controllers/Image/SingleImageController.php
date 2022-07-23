@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\Image;
 
 use Services\PhotoService;
 
@@ -13,9 +13,9 @@ class SingleImageController
         $this->photoService = $photoService;
     }
 
-    function display($params){
+    function display($params)
+    {
         $image = $this->photoService->getImageById($params['id']);
-
         return[
             "single",
             [
