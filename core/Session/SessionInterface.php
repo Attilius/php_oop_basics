@@ -6,5 +6,8 @@ use StorageInterface;
 
 interface SessionInterface extends StorageInterface
 {
-    public function toArray();
+    /**
+     * @return StorageInterface
+     */
+    public function flash();
 }
