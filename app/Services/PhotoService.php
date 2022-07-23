@@ -15,7 +15,21 @@ class PhotoService
         $this->connection = $connection;
     }
 
-    function getPhotosPaginated($size, $offset)
+    public function createImage($title, $file)
+    {
+        if ($statement = $this->connection->prepare("INSERT INTO photos (title, url, thumbnail, created_at, updated_at) VALUES (?,?,?,?,?)")){
+            $currentDate = date("Y-m-d H:i:s");
+            $statement->bind_param("sssss",$title, $file, $file, $currentDate, $currentDate);
+            if (!$statement->execute()){
+                throw new SqlException('Query error: '. $this->connection->error);
+            }
+            return $this->getImageById($this->connection->insert_id);
+        } else {
+            throw new SqlException('Query error: '. $this->connection->error);
+        }
+    }
+
+    public function getPhotosPaginated($size, $offset)
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT * FROM photos LIMIT ? OFFSET ?')) {
             mysqli_stmt_bind_param($statement, "ii", $size, $offset);
@@ -30,7 +44,7 @@ class PhotoService
         }
     }
 
-    function getTotal()
+    public function getTotal()
     {
         if ($result = mysqli_query($this->connection, 'SELECT count(*) as count FROM photos')) {
             $row = mysqli_fetch_assoc($result);
@@ -40,7 +54,7 @@ class PhotoService
         }
     }
 
-    function getImageById($id)
+    public function getImageById($id)
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT * FROM photos WHERE id = ?')) {
             mysqli_stmt_bind_param($statement, "i", $id);
@@ -53,17 +67,17 @@ class PhotoService
         }
     }
 
-    function updateImage($id, $title)
+    public function updateImage($id, $title)
     {
         if ($statement = mysqli_prepare($this->connection, 'UPDATE photos SET title = ? WHERE id = ?')) {
-            mysqli_stmt_bind_param($statement, "si", $title,$id);
-            mysqli_stmt_execute($statement);;
+            mysqli_stmt_bind_param($statement, "si", $title, $id);
+            mysqli_stmt_execute($statement);
         } else {
             throw new SqlException('Query error: '. mysqli_error($this->connection));
         }
     }
 
-    function deleteImage($id)
+    public function deleteImage($id)
     {
         if ($statement = mysqli_prepare($this->connection, 'DELETE FROM photos WHERE id = ?')) {
             mysqli_stmt_bind_param($statement, "i", $id);
