@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\Image;
 
 use Services\PhotoService;
 
@@ -13,14 +13,14 @@ class SingleImageEditController
         $this->photoService = $photoService;
     }
 
-    function edit($params){
+    function edit($params)
+    {
         $title = $_POST["title"];
         $id = $params["id"];
         $this->photoService->updateImage($id, $title);
         return[
             "redirect:/image/$id",
-            [
-            ]
+            []
         ];
     }
 }
