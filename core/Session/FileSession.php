@@ -4,7 +4,6 @@ namespace Session;
 
 class FileSession implements SessionInterface
 {
-
     private string $fileName;
     private $data;
 
@@ -48,6 +47,11 @@ class FileSession implements SessionInterface
     public function toArray()
     {
         return $this->getData();
+    }
+
+    public function flash()
+    {
+        return new Flash($this);
     }
 
     private function getData()
