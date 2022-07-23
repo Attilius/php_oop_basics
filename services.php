@@ -10,6 +10,7 @@ use Controllers\ForgotPassword\PasswordResetSubmitController;
 use Controllers\Image\HomeController;
 use Controllers\Image\ImageCreateFormController;
 use Controllers\Image\ImageCreateSubmitController;
+use Controllers\Image\ImageServeController;
 use Controllers\Image\SingleImageController;
 use Controllers\Image\SingleImageDeleteController;
 use Controllers\Image\SingleImageEditController;
@@ -17,8 +18,8 @@ use Controllers\NotFoundController;
 use Exception\SqlException;
 use Middleware\AuthorizationMiddleware;
 use Middleware\DispatchingMiddleware;
+use Middleware\FlashMessageCleanupMiddleware;
 use Middleware\MiddlewareStack;
-use Request\Request;
 use Request\RequestFactory;
 use Response\ResponseEmitter;
 use Response\ResponseFactory;
@@ -26,6 +27,7 @@ use Services\AuthService;
 use Services\ForgotPasswordService;
 use Services\PhotoService;
 use Session\SessionFactory;
+use Validation\Validator;
 
 return [
     "responseFactory" => function(ServiceContainer $container){
@@ -52,6 +54,9 @@ return [
         }
         return $connection;
     },
+    "validator" => function(){
+        return new Validator();
+    },
     "photoService" => function(ServiceContainer $container){
         return new PhotoService($container->get("connection"));
     },
@@ -60,6 +65,9 @@ return [
     },
     "singleImageController" => function(ServiceContainer $container){
         return new SingleImageController($container->get("photoService"));
+    },
+    "imageServeController" => function(ServiceContainer $container){
+        return new ImageServeController($container->get("basePath"));
     },
     "singleImageEditController" => function(ServiceContainer $container){
         return new SingleImageEditController($container->get("photoService"));
@@ -97,11 +105,12 @@ return [
     "notFoundController" => function(){
         return new NotFoundController();
     },
-    "imageCreateFormController" => function(){
-        return new ImageCreateFormController();
+    "imageCreateFormController" => function(ServiceContainer $container){
+        return new ImageCreateFormController($container->get("session"));
     },
     "imageCreateSubmitController" => function(ServiceContainer $container){
-        return new ImageCreateSubmitController($container->get("basePath"), $container->get("request"));
+        return new ImageCreateSubmitController($container->get("basePath"), $container->get("request"),
+            $container->get("photoService"), $container->get("validator"));
     },
     "session" => function(ServiceContainer $container){
         $sessionConfig = $container->get("config")["session"];
@@ -119,9 +128,10 @@ return [
     },
     "pipeline" => function(ServiceContainer $container){
         $pipeLine = new MiddlewareStack();
-        $authMiddleware = new AuthorizationMiddleware(["/"], $container->get("authService"), "/login");
+        $authMiddleware = new AuthorizationMiddleware(["^/$", "^/image/[0-9]+$", "^/private/[a-z\.0-9]+"], $container->get("authService"), "/login");
         $dispatcherMiddleware = new DispatchingMiddleware($container->get("dispatcher"), $container->get("responseFactory"));
         $pipeLine->addMiddleware($authMiddleware);
+        $pipeLine->addMiddleware(new FlashMessageCleanupMiddleware());
         $pipeLine->addMiddleware($dispatcherMiddleware); // This is last in stack
         return $pipeLine;
     },
@@ -139,6 +149,7 @@ return [
         $dispatcher->addRoute('/image/(?<id>[\d]+)', 'singleImageController@display');
         $dispatcher->addRoute('/image/(?<id>[\d]+)/edit', 'singleImageEditController@edit', 'POST');
         $dispatcher->addRoute('/image/(?<id>[\d]+)/delete', 'singleImageDeleteController@delete', 'POST');
+        $dispatcher->addRoute('/private/(?<id>[a-z\.0-9]+)', 'imageServeController@show');
         $dispatcher->addRoute('/login', 'loginFormController@show');
         $dispatcher->addRoute('/logout', 'logoutSubmitController@submit');
         $dispatcher->addRoute('/login', 'loginSubmitController@submit','POST');
