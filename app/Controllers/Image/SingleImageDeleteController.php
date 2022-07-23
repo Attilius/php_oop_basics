@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\Image;
 
 use Services\PhotoService;
 
@@ -13,7 +13,8 @@ class SingleImageDeleteController
         $this->photoService = $photoService;
     }
 
-    function delete($params){
+    function delete($params)
+    {
         $id = $params["id"];
         $this->photoService->deleteImage($id);
         return[
