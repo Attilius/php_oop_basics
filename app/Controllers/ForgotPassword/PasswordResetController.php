@@ -1,12 +1,11 @@
 <?php
 
-namespace Controllers;
+namespace Controllers\ForgotPassword;
 
-use Request;
+use Request\Request;
 
 class PasswordResetController
 {
-
     private Request $request;
 
     public function __construct(Request $request)
