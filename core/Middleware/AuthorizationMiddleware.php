@@ -8,7 +8,6 @@ use Services\AuthService;
 
 class AuthorizationMiddleware implements MiddlewareInterface
 {
-
     private array $protectedUrls;
     private AuthService $authService;
     private string $loginUrl;
@@ -28,7 +27,10 @@ class AuthorizationMiddleware implements MiddlewareInterface
 
     public function process(Request $request, Response $response, callable $next)
     {
-        if (in_array($request->getUri(), $this->protectedUrls) && !$this->authService->check()){
+        $matches = array_filter($this->protectedUrls, function ($url) use ($request){
+            return preg_match("%".$url."%", $request->getUri());
+        });
+        if ($matches && !$this->authService->check()){
             return Response::redirect($this->loginUrl);
         }
         return $next($request, $response);
