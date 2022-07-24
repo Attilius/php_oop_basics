@@ -2,8 +2,8 @@
 
 namespace Middleware;
 
-use Request;
-use Response;
+use Request\Request;
+use Response\Response;
 
 interface MiddlewareInterface
 {
