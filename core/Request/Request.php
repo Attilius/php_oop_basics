@@ -1,4 +1,5 @@
 <?php
+namespace Request;
 
 use Session\SessionInterface;
 
@@ -11,8 +12,10 @@ class Request
     private string $uri;
     private string $method;
     private SessionInterface $session;
+    private array $files;
 
-    public function __construct(string $uri, string $method, SessionInterface $session, string $body = null, array $headers = [], array $cookies = [], array $params = [])
+    public function __construct(string $uri, string $method, SessionInterface $session, string $body = null,
+                                array $headers = [], array $cookies = [], array $params = [], array $files = [])
     {
         $this->body = $body;
         $this->method = $method;
@@ -21,6 +24,7 @@ class Request
         $this->params = $params;
         $this->uri = $uri;
         $this->session = $session;
+        $this->files = $files;
     }
 
     /**
@@ -55,6 +59,14 @@ class Request
         return $this->params;
     }
 
+    public function getParam($fieldName)
+    {
+        if (!array_key_exists($fieldName, $this->params)){
+            return null;
+        }
+        return $this->params[$fieldName];
+    }
+
     /**
      * @return string
      */
@@ -77,5 +89,21 @@ class Request
     public function getSession(): SessionInterface
     {
         return $this->session;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFiles(): array
+    {
+        return $this->files;
+    }
+
+    public function getFile($fieldName)
+    {
+        if (!array_key_exists($fieldName, $this->files)){
+            return null;
+        }
+        return $this->files[$fieldName];
     }
 }
