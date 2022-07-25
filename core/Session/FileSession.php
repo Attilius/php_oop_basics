@@ -2,6 +2,8 @@
 
 namespace Session;
 
+use Symfony\Component\Security\Csrf\Exception\TokenNotFoundException;
+
 class FileSession implements SessionInterface
 {
     private string $fileName;
@@ -69,5 +71,34 @@ class FileSession implements SessionInterface
         if (!file_put_contents($this->fileName, serialize($this->data))){
             throw new \Exception("Can't write file ". $this->fileName);
         }
+    }
+
+    public function getToken(string $tokenId): string
+    {
+        if ($this->hasToken($tokenId)){
+            return $this->get("_csrf:". $tokenId);
+        } else {
+            throw new TokenNotFoundException("The CSRF token not found!");
+        }
+    }
+
+    public function setToken(string $tokenId, string $token)
+    {
+        $this->put("_csrf:". $tokenId, $token);
+    }
+
+    public function removeToken(string $tokenId): ?string
+    {
+        if ($this->hasToken($tokenId)){
+            $token = $this->getToken($tokenId);
+            $this->remove("_csrf:". $tokenId);
+            return $token;
+        }
+        return null;
+    }
+
+    public function hasToken(string $tokenId): bool
+    {
+        return $this->has("_csrf:". $tokenId);
     }
 }
