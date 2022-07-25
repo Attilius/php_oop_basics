@@ -17,6 +17,7 @@ use Controllers\Image\SingleImageEditController;
 use Controllers\NotFoundController;
 use Exception\SqlException;
 use Middleware\AuthorizationMiddleware;
+use Middleware\CsrfMiddleware;
 use Middleware\DispatchingMiddleware;
 use Middleware\FlashMessageCleanupMiddleware;
 use Middleware\MiddlewareStack;
@@ -27,6 +28,8 @@ use Services\AuthService;
 use Services\ForgotPasswordService;
 use Services\PhotoService;
 use Session\SessionFactory;
+use Symfony\Component\Security\Csrf\CsrfTokenManager;
+use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
 use Validation\Validator;
 
 return [
@@ -34,7 +37,7 @@ return [
         return new ResponseFactory($container->get("viewRenderer"));
     },
     "viewRenderer" => function(ServiceContainer $container){
-        return new ViewRenderer($container->get("basePath"));
+        return new ViewRenderer($container->get("basePath"), $container->get("csrf"));
     },
     "responseEmitter" => function(){
         return new ResponseEmitter();
@@ -126,10 +129,14 @@ return [
             ->setPassword($mailerConfig["password"]);
         return new Swift_Mailer($transport);
     },
+    "csrf" => function(ServiceContainer $container){
+        return new CsrfTokenManager(new UriSafeTokenGenerator(), $container->get("session"));
+    },
     "pipeline" => function(ServiceContainer $container){
         $pipeLine = new MiddlewareStack();
         $authMiddleware = new AuthorizationMiddleware(["^/$", "^/image/[0-9]+$", "^/private/[a-z\.0-9]+"], $container->get("authService"), "/login");
         $dispatcherMiddleware = new DispatchingMiddleware($container->get("dispatcher"), $container->get("responseFactory"));
+        $pipeLine->addMiddleware(new CsrfMiddleware($container->get("csrf")));
         $pipeLine->addMiddleware($authMiddleware);
         $pipeLine->addMiddleware(new FlashMessageCleanupMiddleware());
         $pipeLine->addMiddleware($dispatcherMiddleware); // This is last in stack
