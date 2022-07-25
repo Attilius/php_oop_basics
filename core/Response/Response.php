@@ -1,6 +1,8 @@
 <?php
 
-class Response
+namespace Response;
+
+class Response implements ResponseInterface
 {
     private $body;
     private $headers;
@@ -15,12 +17,9 @@ class Response
         $this->reasonPhrase = $reasonPhrase;
     }
 
-    /**
-     * @return string
-     */
-    public function getBody(): string
+    public function emitBody()
     {
-        return $this->body;
+        echo $this->body;
     }
 
     /**
