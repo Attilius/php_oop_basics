@@ -3,7 +3,6 @@
 
 class Photo
 {
-
     public $id;
     public $title;
     public $thumbnail;
@@ -61,6 +60,4 @@ class Photo
     {
         return $this->url;
     }
-
-
 }
