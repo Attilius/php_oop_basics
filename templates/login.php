@@ -14,6 +14,7 @@
             <input class="form-control" type="password" name="password" id="password" placeholder="Enter your password...">
         </div>
         <button class="btn btn-primary mt-2" type="submit">Login</button>
+        <?= $_csrf ?>
     </form>
     <div style="padding-top: 20px; text-align: center">
         <a class="btn btn-info" role="button" href="/register">Register</a>
