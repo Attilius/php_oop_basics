@@ -13,7 +13,7 @@ class ImageCreateFormController
         $this->session = $session;
     }
 
-    public function show()
+    public function show(): array
     {
         $violations = $this->session->flash()->get("violations");
         return [
