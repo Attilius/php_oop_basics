@@ -33,7 +33,7 @@ class LoginSubmitController
         ];
     }
 
-    private function markAsLoginFailed()
+    private function markAsLoginFailed(): void
     {
         $this->session->put("containsError", 1);
     }
