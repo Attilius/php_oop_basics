@@ -13,7 +13,7 @@ class PasswordResetController
         $this->request = $request;
     }
 
-    public function show()
+    public function show(): array
     {
         return [
             "reset",
