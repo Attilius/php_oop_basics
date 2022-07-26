@@ -16,7 +16,7 @@ class PasswordResetSubmitController
         $this->service = $service;
     }
 
-    public function submit()
+    public function submit(): array
     {
         $params = $this->request->getParams();
         $session = $this->request->getSession();
