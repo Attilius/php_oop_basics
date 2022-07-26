@@ -14,7 +14,7 @@ class LoginFormController
         $this->session = $session;
     }
 
-    public function show()
+    public function show(): array
     {
         $containsError = $this->checkForError();
         return [
