@@ -13,7 +13,7 @@ class HomeController
         $this->photoService = $photoService;
     }
 
-    function handle()
+    function handle(): array
     {
         $size = $_GET['size'] ?? 10; // (??) if $_GET['size] = null -> default value = 10
         $page = $_GET['page'] ?? 1;
