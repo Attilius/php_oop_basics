@@ -17,7 +17,7 @@ class AuthService
         $this->session = $session;
     }
 
-    public function loginUser($email, $password)
+    public function loginUser($email, $password): bool
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT name, password FROM users WHERE email = ?'))
         {
