@@ -13,7 +13,7 @@ class ForgotPasswordController
         $this->session = $session;
     }
 
-    public function show()
+    public function show(): array
     {
         return [
             "forgotpass",
