@@ -16,7 +16,7 @@ class LoginSubmitController
         $this->session = $session;
     }
 
-    function submit()
+    function submit(): array
     {
         $password = trim($_POST["password"]);
         $email = trim($_POST["email"]);
