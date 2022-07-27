@@ -6,7 +6,7 @@ use Response\BinaryFileResponse;
 
 class ImageServeController
 {
-    private $basePath;
+    private string $basePath;
 
     public function __construct($basePath)
     {
