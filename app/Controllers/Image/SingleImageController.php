@@ -13,7 +13,7 @@ class SingleImageController
         $this->photoService = $photoService;
     }
 
-    function display($params)
+    function display($params): array
     {
         $image = $this->photoService->getImageById($params['id']);
         return[
