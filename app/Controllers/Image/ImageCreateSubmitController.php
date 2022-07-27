@@ -8,6 +8,7 @@ use RuntimeException;
 use Services\PhotoService;
 use Validation\Validator;
 use Exception\SqlException;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 class ImageCreateSubmitController
 {
@@ -58,7 +59,12 @@ class ImageCreateSubmitController
         }
     }
 
-    private function validate($title, $file)
+    /**
+     * @param $title
+     * @param $file
+     * @return ConstraintViolationList
+     */
+    private function validate($title, $file): ConstraintViolationList
     {
         return $this->validator->validate([
             "required|min:5|max:255" => $title,
