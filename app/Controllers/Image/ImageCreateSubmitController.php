@@ -16,7 +16,7 @@ class ImageCreateSubmitController
     private PhotoService $photoService;
     private Validator $validator;
 
-    public function __construct($basePath, Request $request, PhotoService $photoService, Validator $validator)
+    public function __construct(string $basePath, Request $request, PhotoService $photoService, Validator $validator)
     {
         $this->basePath = $basePath;
         $this->request = $request;
