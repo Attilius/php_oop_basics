@@ -13,7 +13,11 @@ class ImageServeController
         $this->basePath = $basePath;
     }
 
-    public function show(array $params)
+    /**
+     * @param array $params
+     * @return BinaryFileResponse
+     */
+    public function show(array $params): BinaryFileResponse
     {
         return new BinaryFileResponse($this->basePath."/storage/".$params["id"]);
     }
