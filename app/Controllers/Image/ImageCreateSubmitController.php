@@ -24,7 +24,7 @@ class ImageCreateSubmitController
         $this->validator = $validator;
     }
 
-    public function submit()
+    public function submit(): Response
     {
         $targetDir = $this->basePath."/storage/";
         try {
