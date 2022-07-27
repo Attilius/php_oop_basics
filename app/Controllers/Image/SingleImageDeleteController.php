@@ -13,7 +13,7 @@ class SingleImageDeleteController
         $this->photoService = $photoService;
     }
 
-    function delete($params)
+    function delete($params): array
     {
         $id = $params["id"];
         $this->photoService->deleteImage($id);
