@@ -7,6 +7,7 @@ use Response\Response;
 use RuntimeException;
 use Services\PhotoService;
 use Validation\Validator;
+use Exception\SqlException;
 
 class ImageCreateSubmitController
 {
@@ -24,6 +25,10 @@ class ImageCreateSubmitController
         $this->validator = $validator;
     }
 
+    /**
+     * @return Response
+     * @throws SqlException
+     */
     public function submit(): Response
     {
         $targetDir = $this->basePath."/storage/";
