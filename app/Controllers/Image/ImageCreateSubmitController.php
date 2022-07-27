@@ -11,7 +11,7 @@ use Validation\Validator;
 class ImageCreateSubmitController
 {
 
-    private $basePath;
+    private string $basePath;
     private Request $request;
     private PhotoService $photoService;
     private Validator $validator;
