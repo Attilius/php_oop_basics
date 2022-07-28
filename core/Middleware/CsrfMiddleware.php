@@ -17,7 +17,13 @@ class CsrfMiddleware implements MiddlewareInterface
         $this->csrfTokenManager = $csrfTokenManager;
     }
 
-    public function process(Request $request, Response $response, callable $next)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return Response
+     */
+    public function process(Request $request, Response $response, callable $next): Response
     {
         if ($request->getMethod() === "POST" && $this->tokenIsInvalid($request)){
             return new Response("CSRF token is not present", [], 403, "Forbidden");
