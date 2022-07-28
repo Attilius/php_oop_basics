@@ -24,7 +24,12 @@ class MiddlewareStack
         return $this->__invoke($request, $response);
     }
 
-    public function __invoke(Request $request, Response $response)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response): Response
     {
         $middleware = array_shift($this->middlewares);
         if ($middleware == null){
