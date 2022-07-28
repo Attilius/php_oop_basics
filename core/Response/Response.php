@@ -46,6 +46,10 @@ class Response implements ResponseInterface
         return $this->reasonPhrase;
     }
 
+    /**
+     * @param $url
+     * @return Response
+     */
     public static function redirect($url): Response
     {
         return new Response("",[
