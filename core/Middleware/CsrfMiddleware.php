@@ -31,7 +31,11 @@ class CsrfMiddleware implements MiddlewareInterface
         return $next($request, $response);
     }
 
-    private function tokenIsInvalid(Request $request)
+    /**
+     * @param Request $request
+     * @return bool
+     */
+    private function tokenIsInvalid(Request $request): bool
     {
         return !$this->csrfTokenManager->isTokenValid(new CsrfToken("_csrf", $request->getParam("_csrf")));
     }
