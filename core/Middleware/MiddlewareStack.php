@@ -9,7 +9,7 @@ class MiddlewareStack
 {
     private array $middlewares = [];
 
-    public function addMiddleware(MiddlewareInterface $middleware)
+    public function addMiddleware(MiddlewareInterface $middleware): void
     {
         $this->middlewares[] = $middleware;
     }
