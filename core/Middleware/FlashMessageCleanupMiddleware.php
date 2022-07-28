@@ -8,7 +8,13 @@ use Response\ResponseInterface;
 
 class FlashMessageCleanupMiddleware implements MiddlewareInterface
 {
-    public function process(Request $request, Response $response, callable $next)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return ResponseInterface
+     */
+    public function process(Request $request, Response $response, callable $next): ResponseInterface
     {
         /**
          * @var ResponseInterface
