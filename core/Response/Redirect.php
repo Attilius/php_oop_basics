@@ -12,7 +12,11 @@ class Redirect
         $this->target = $target;
     }
 
-    public static function to($target)
+    /**
+     * @param $target
+     * @return Redirect
+     */
+    public static function to($target): Redirect
     {
         return new self($target);
     }
