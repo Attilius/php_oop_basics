@@ -25,7 +25,13 @@ class AuthorizationMiddleware implements MiddlewareInterface
         $this->loginUrl = $loginUrl;
     }
 
-    public function process(Request $request, Response $response, callable $next)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return Response
+     */
+    public function process(Request $request, Response $response, callable $next): Response
     {
         $matches = array_filter($this->protectedUrls, function ($url) use ($request){
             return preg_match("%".$url."%", $request->getUri());
