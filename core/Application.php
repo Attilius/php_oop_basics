@@ -11,7 +11,7 @@ class Application
         $this->container = $container;
     }
 
-    public function start(string $basePath)
+    public function start(string $basePath): void
     {
         try {
             $this->container->put("basePath", $basePath);
