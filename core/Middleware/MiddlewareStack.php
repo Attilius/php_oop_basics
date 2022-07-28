@@ -14,7 +14,12 @@ class MiddlewareStack
         $this->middlewares[] = $middleware;
     }
 
-    public function pipe(Request $request, Response $response)
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return Response
+     */
+    public function pipe(Request $request, Response $response): Response
     {
         return $this->__invoke($request, $response);
     }
