@@ -100,6 +100,10 @@ class FileSession implements SessionInterface
         }
     }
 
+    /**
+     * @param string $tokenId
+     * @return string
+     */
     public function getToken(string $tokenId): string
     {
         if ($this->hasToken($tokenId)){
