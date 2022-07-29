@@ -16,7 +16,7 @@ class FileSession implements SessionInterface
         $this->fileName = $folder.DIRECTORY_SEPARATOR.$id;
     }
 
-    public function has($key)
+    public function has($key): bool
     {
         return array_key_exists($key, $this->getData());
     }
