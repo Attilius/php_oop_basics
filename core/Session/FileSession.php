@@ -44,7 +44,12 @@ class FileSession implements SessionInterface
         $this->persist();
     }
 
-    public function remove($key)
+    /**
+     * @param $key
+     * @return void
+     * @throws Exception
+     */
+    public function remove($key): void
     {
         $this->getData();
         unset($this->data[$key]);
