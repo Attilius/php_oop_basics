@@ -51,7 +51,7 @@ class FileSession implements SessionInterface
         return $this->getData();
     }
 
-    public function flash()
+    public function flash(): Flash
     {
         return new Flash($this);
     }
