@@ -124,6 +124,11 @@ class FileSession implements SessionInterface
         $this->put("_csrf:". $tokenId, $token);
     }
 
+    /**
+     * @param string $tokenId
+     * @return string|null
+     * @throws Exception
+     */
     public function removeToken(string $tokenId): ?string
     {
         if ($this->hasToken($tokenId)){
