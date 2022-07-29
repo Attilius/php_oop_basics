@@ -56,7 +56,11 @@ class FileSession implements SessionInterface
         $this->persist();
     }
 
-    public function clear()
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function clear(): void
     {
         $this->data = [];
         $this->persist();
