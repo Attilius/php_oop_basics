@@ -3,6 +3,7 @@
 namespace Session;
 
 use Symfony\Component\Security\Csrf\Exception\TokenNotFoundException;
+use Exception;
 
 class FileSession implements SessionInterface
 {
@@ -30,7 +31,13 @@ class FileSession implements SessionInterface
         return $this->getData()[$key];
     }
 
-    public function put($key, $value)
+    /**
+     * @param $key
+     * @param $value
+     * @return void
+     * @throws Exception
+     */
+    public function put($key, $value): void
     {
         $this->getData();
         $this->data[$key] = $value;
