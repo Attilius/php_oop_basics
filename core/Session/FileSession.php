@@ -139,6 +139,10 @@ class FileSession implements SessionInterface
         return null;
     }
 
+    /**
+     * @param string $tokenId
+     * @return bool
+     */
     public function hasToken(string $tokenId): bool
     {
         return $this->has("_csrf:". $tokenId);
