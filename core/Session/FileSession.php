@@ -113,7 +113,13 @@ class FileSession implements SessionInterface
         }
     }
 
-    public function setToken(string $tokenId, string $token)
+    /**
+     * @param string $tokenId
+     * @param string $token
+     * @return void
+     * @throws Exception
+     */
+    public function setToken(string $tokenId, string $token): void
     {
         $this->put("_csrf:". $tokenId, $token);
     }
