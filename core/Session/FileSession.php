@@ -89,7 +89,11 @@ class FileSession implements SessionInterface
         return $this->data;
     }
 
-    private function persist()
+    /**
+     * @return void
+     * @throws Exception
+     */
+    private function persist(): void
     {
         if (!file_put_contents($this->fileName, serialize($this->data))){
             throw new \Exception("Can't write file ". $this->fileName);
