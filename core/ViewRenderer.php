@@ -1,22 +1,28 @@
 <?php
 
+use Laminas\I18n\Translator\Translator;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class ViewRenderer
 {
     private $basePath;
     private CsrfTokenManagerInterface $csrfTokenManager;
+    private Translator $translator;
 
-    public function __construct($basePath, CsrfTokenManagerInterface $csrfTokenManager)
+    public function __construct($basePath, CsrfTokenManagerInterface $csrfTokenManager, Translator $translator)
     {
         $this->basePath = $basePath;
         $this->csrfTokenManager = $csrfTokenManager;
+        $this->translator = $translator;
     }
 
-    public function render(ModelAndView $modelAndView)
+    public function render(ModelAndView $modelAndView, string $locale)
     {
         extract($modelAndView->getModel());
         $view = $modelAndView->getViewName();
+        $trans = function ($key) use($locale) {
+            return $this->translator->translate($key, "messages", $locale);
+        };
         $_csrf = $this->generateCsrfInput();
         ob_clean();
         require_once $this->basePath."/templates/layout.php";
