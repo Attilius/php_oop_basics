@@ -6,16 +6,16 @@
         <div class="col-md-6">
             <form method="post" action="/image/<?php esc( $image->getId() ); ?>/edit">
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input id="title" name="title" value="<?php esc( $image->getTitle() ); ?>" class="form-control" placeholder="Enter the title here." />
+                    <label for="title"><?= $trans("Title"); ?></label>
+                    <input id="title" name="title" value="<?php esc( $image->getTitle() ); ?>" class="form-control" placeholder="<?= $trans("Enter the title here") . "..."; ?>" />
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary"><?= $trans("Update"); ?></button>
             </form>
             <form class="mt-5" method="post" action="/image/<?php esc( $image->getId() ); ?>/delete">
                 <div class="form-group">
-                    <label for="title">Danger zone</label>
+                    <label for="title"><?= $trans("Danger zone"); ?></label>
                 </div>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger"><?= $trans("Delete"); ?></button>
             </form>
         </div>
     </div>
