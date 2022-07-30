@@ -14,12 +14,17 @@ use Controllers\Image\ImageServeController;
 use Controllers\Image\SingleImageController;
 use Controllers\Image\SingleImageDeleteController;
 use Controllers\Image\SingleImageEditController;
+use Controllers\Locale\LocaleChangeController;
 use Controllers\NotFoundController;
 use Exception\SqlException;
+use Laminas\I18n\Translator\Loader\Gettext;
+use Laminas\I18n\Translator\Loader\PhpArray;
+use Laminas\I18n\Translator\Translator;
 use Middleware\AuthorizationMiddleware;
 use Middleware\CsrfMiddleware;
 use Middleware\DispatchingMiddleware;
 use Middleware\FlashMessageCleanupMiddleware;
+use Middleware\LocalizationMiddleware;
 use Middleware\MiddlewareStack;
 use Request\RequestFactory;
 use Response\ResponseEmitter;
@@ -33,11 +38,21 @@ use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
 use Validation\Validator;
 
 return [
+    "translator" => function(ServiceContainer $container){
+        $translator =  new Translator();
+        $baseDir = $container->get("basePath"). "/i18n/";
+        //$pattern = "%s/LC_MESSAGES/messages.mo";
+        //$translator->addTranslationFilePattern(Gettext::class, $baseDir, $pattern, "messages");
+        $pattern = "%s/messages.php";
+        $translator->addTranslationFilePattern(PhpArray::class, $baseDir, $pattern, "messages");
+        return $translator;
+    },
     "responseFactory" => function(ServiceContainer $container){
         return new ResponseFactory($container->get("viewRenderer"));
     },
     "viewRenderer" => function(ServiceContainer $container){
-        return new ViewRenderer($container->get("basePath"), $container->get("csrf"));
+
+        return new ViewRenderer($container->get("basePath"), $container->get("csrf"), $container->get("translator"));
     },
     "responseEmitter" => function(){
         return new ResponseEmitter();
@@ -102,6 +117,9 @@ return [
     "passwordResetController" => function(ServiceContainer $container){
         return new PasswordResetController($container->get("request"));
     },
+    "localeChangeController" => function(ServiceContainer $container){
+        return new LocaleChangeController($container->get("request"), $container->get("config")["available_locales"]);
+    },
     "passwordResetSubmitController" => function(ServiceContainer $container){
         return new PasswordResetSubmitController($container->get("request"), $container->get("forgotPasswordService"));
     },
@@ -133,12 +151,14 @@ return [
         return new CsrfTokenManager(new UriSafeTokenGenerator(), $container->get("session"));
     },
     "pipeline" => function(ServiceContainer $container){
+        $config =  $container->get("config");
         $pipeLine = new MiddlewareStack();
         $authMiddleware = new AuthorizationMiddleware(["^/$", "^/image/[0-9]+$", "^/private/[a-z\.0-9]+"], $container->get("authService"), "/login");
         $dispatcherMiddleware = new DispatchingMiddleware($container->get("dispatcher"), $container->get("responseFactory"));
         $pipeLine->addMiddleware(new CsrfMiddleware($container->get("csrf")));
         $pipeLine->addMiddleware($authMiddleware);
         $pipeLine->addMiddleware(new FlashMessageCleanupMiddleware());
+        $pipeLine->addMiddleware(new LocalizationMiddleware($config["default_locale"], $config["available_locales"]));
         $pipeLine->addMiddleware($dispatcherMiddleware); // This is last in stack
         return $pipeLine;
     },
@@ -168,6 +188,8 @@ return [
         $dispatcher->addRoute('/reset', 'passwordResetSubmitController@submit','POST');
         $dispatcher->addRoute('/image/add', 'imageCreateFormController@show');
         $dispatcher->addRoute('/image/add', 'imageCreateSubmitController@submit','POST');
+        $dispatcher->addRoute('/locale/(?<locale>[a-z_A-Z]+)', 'localeChangeController@change');
+
         return $dispatcher;
     }
 ];
