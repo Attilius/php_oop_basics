@@ -5,6 +5,12 @@ return [
     'db_name' => 'training',
     'db_user' => 'training',
     'db_pass' => 'password',
+    "default_locale" => "hu_HU",
+    "available_locales" => [
+        "en_US",
+        "hu_HU",
+        "fr_FR"
+    ],
     'session' => [
         'driver' => 'file',
         'config' => [
