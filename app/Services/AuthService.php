@@ -19,7 +19,7 @@ class AuthService
 
     public function loginUser($email, $password): bool
     {
-        if ($statement = mysqli_prepare($this->connection, 'SELECT name, password FROM users WHERE email = ?'))
+        if ($statement = mysqli_prepare($this->connection, 'SELECT name, password, locale FROM users WHERE email = ?'))
         {
             mysqli_stmt_bind_param($statement, "s", $email);
             mysqli_stmt_execute($statement);
@@ -27,7 +27,8 @@ class AuthService
             $record = mysqli_fetch_assoc($result);
             if ($record != null && password_verify($password, $record["password"])){
                 $this->session->put("user", [
-                    "name" => $record["name"]
+                    "name" => $record["name"],
+                    "locale" => $record["locale"]
                 ]);
                 return true;
             }
