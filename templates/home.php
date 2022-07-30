@@ -2,7 +2,7 @@
 <main class="container">
     <form class="form-control">
         <div class="form-group">
-            <label for="size">Page size</label>
+            <label for="size"><?= $trans("Page size"); ?></label>
             <select id="size" name="size">
                 <?php foreach ($possiblePageSizes as $pageSize):?>
                     <option
@@ -12,8 +12,8 @@
                     ><?= $pageSize ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/image/add" class="btn btn-success">Add image</a>
+            <button type="submit" class="btn btn-primary"><?= $trans("Submit"); ?></button>
+            <a href="/image/add" class="btn btn-success"><?= $trans("Add image"); ?></a>
         </div>
     </form>
     <?php require "pagination.php"; ?>
