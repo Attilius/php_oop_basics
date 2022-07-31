@@ -54,7 +54,7 @@ class PhotoService
         }
     }
 
-    public function getImageById($id)
+    public function getImageById($id): Photo
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT * FROM photos WHERE id = ?')) {
             mysqli_stmt_bind_param($statement, "i", $id);
