@@ -15,7 +15,7 @@ class LocaleChangeController
         $this->request = $request;
     }
 
-    public function change($params)
+    public function change($params): array
     {
         $locale = $params["locale"];
         if (in_array($locale, $this->availableLocales)){
