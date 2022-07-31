@@ -118,7 +118,11 @@ class Request
         return $this->locale;
     }
 
-    public function withLocale(string $locale)
+    /**
+     * @param string $locale
+     * @return Request
+     */
+    public function withLocale(string $locale): Request
     {
         return new self($this->uri, $this->method, $this->session, $this->body, $this->headers, $this->cookies,
         $this->params, $this->files, $locale);
