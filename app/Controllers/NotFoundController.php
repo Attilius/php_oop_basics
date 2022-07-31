@@ -4,7 +4,7 @@ namespace Controllers;
 
 class NotFoundController
 {
-    function handle()
+    function handle(): array
     {
         return [
             "404",
