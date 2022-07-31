@@ -14,7 +14,7 @@ class Dispatcher
         $this->container = $container;
     }
 
-    public function addRoute($action, $callable, $method = "GET")
+    public function addRoute($action, $callable, $method = "GET"): void
     {
         $pattern = "%^$action$%";
         $this->routes[strtoupper($method)][$pattern] = $callable;
