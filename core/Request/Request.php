@@ -13,9 +13,11 @@ class Request
     private string $method;
     private SessionInterface $session;
     private array $files;
+    private $locale;
 
     public function __construct(string $uri, string $method, SessionInterface $session, string $body = null,
-                                array $headers = [], array $cookies = [], array $params = [], array $files = [])
+                                array $headers = [], array $cookies = [], array $params = [], array $files = [],
+                                string $locale = null)
     {
         $this->body = $body;
         $this->method = $method;
@@ -25,6 +27,7 @@ class Request
         $this->uri = $uri;
         $this->session = $session;
         $this->files = $files;
+        $this->locale = $locale;
     }
 
     /**
@@ -105,5 +108,19 @@ class Request
             return null;
         }
         return $this->files[$fieldName];
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function withLocale(string $locale)
+    {
+        return new self($this->uri, $this->method, $this->session, $this->body, $this->headers, $this->cookies,
+        $this->params, $this->files, $locale);
     }
 }
