@@ -1,5 +1,7 @@
 <?php
 
+use Exception\ServiceNotFoundException;
+
 class ServiceContainer
 {
     private array $definitions;
@@ -9,6 +11,10 @@ class ServiceContainer
         $this->definitions = $definitions;
     }
 
+    /**
+     * @param $service
+     * @throws ServiceNotFoundException
+     */
     public function get($service)
     {
         if (array_key_exists($service, $this->definitions)){
