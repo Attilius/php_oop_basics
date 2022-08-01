@@ -87,7 +87,13 @@ class PhotoService
         }
     }
 
-    public function updateImage($id, $title)
+    /**
+     * @param $id
+     * @param $title
+     * @return void
+     * @throws SqlException
+     */
+    public function updateImage($id, $title): void
     {
         if ($statement = mysqli_prepare($this->connection, 'UPDATE photos SET title = ? WHERE id = ?')) {
             mysqli_stmt_bind_param($statement, "si", $title, $id);
