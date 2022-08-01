@@ -20,6 +20,9 @@ class BinaryFileResponse implements ResponseInterface
         $this->reasonPhrase = "Ok";
     }
 
+    /**
+     * @return void
+     */
     public function emitBody(): void
     {
         readfile($this->fileName);
