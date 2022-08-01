@@ -5,11 +5,11 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class ViewRenderer
 {
-    private $basePath;
+    private string $basePath;
     private CsrfTokenManagerInterface $csrfTokenManager;
     private Translator $translator;
 
-    public function __construct($basePath, CsrfTokenManagerInterface $csrfTokenManager, Translator $translator)
+    public function __construct(string $basePath, CsrfTokenManagerInterface $csrfTokenManager, Translator $translator)
     {
         $this->basePath = $basePath;
         $this->csrfTokenManager = $csrfTokenManager;
