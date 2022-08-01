@@ -2,11 +2,17 @@
 
 namespace Request;
 
+use Exception\ServiceNotFoundException;
 use FileSystem\UploadedFile;
 use ServiceContainer;
 
 class RequestFactory
 {
+    /**
+     * @param ServiceContainer $container
+     * @return Request
+     * @throws ServiceNotFoundException
+     */
     public static function createFromGlobals(ServiceContainer $container): Request
     {
         $files = [];
