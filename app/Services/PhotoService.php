@@ -103,7 +103,12 @@ class PhotoService
         }
     }
 
-    public function deleteImage($id)
+    /**
+     * @param $id
+     * @return void
+     * @throws SqlException
+     */
+    public function deleteImage($id): void
     {
         if ($statement = mysqli_prepare($this->connection, 'DELETE FROM photos WHERE id = ?')) {
             mysqli_stmt_bind_param($statement, "i", $id);
