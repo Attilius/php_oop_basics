@@ -28,6 +28,11 @@ class ServiceContainer
         return $this->definitions[$service];
     }
 
+    /**
+     * @param $key
+     * @param $service
+     * @return void
+     */
     public function put($key, $service): void
     {
         $this->definitions[$key] = $service;
