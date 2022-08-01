@@ -15,7 +15,13 @@ class PhotoService
         $this->connection = $connection;
     }
 
-    public function createImage($title, $file)
+    /**
+     * @param $title
+     * @param $file
+     * @return Photo
+     * @throws SqlException
+     */
+    public function createImage($title, $file): Photo
     {
         if ($statement = $this->connection->prepare("INSERT INTO photos (title, url, thumbnail, created_at, updated_at) VALUES (?,?,?,?,?)")){
             $currentDate = date("Y-m-d H:i:s");
