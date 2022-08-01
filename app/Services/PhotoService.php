@@ -35,6 +35,12 @@ class PhotoService
         }
     }
 
+    /**
+     * @param $size
+     * @param $offset
+     * @return Photo[]
+     * @throws SqlException
+     */
     public function getPhotosPaginated($size, $offset)
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT * FROM photos LIMIT ? OFFSET ?')) {
