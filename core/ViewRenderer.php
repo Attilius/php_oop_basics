@@ -16,6 +16,7 @@ class ViewRenderer
         $this->translator = $translator;
     }
 
+
     public function render(ModelAndView $modelAndView, string $locale)
     {
         extract($modelAndView->getModel());
@@ -29,7 +30,10 @@ class ViewRenderer
         return ob_get_clean();
     }
 
-    private function generateCsrfInput()
+    /**
+     * @return string
+     */
+    private function generateCsrfInput(): string
     {
         $csrfToken = $this->csrfTokenManager->getToken("_csrf")->getValue();
         return "<input type='hidden' name='_csrf' value='${csrfToken}'/>";
