@@ -69,6 +69,11 @@ class PhotoService
         }
     }
 
+    /**
+     * @param $id
+     * @return Photo
+     * @throws SqlException
+     */
     public function getImageById($id): Photo
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT * FROM photos WHERE id = ?')) {
