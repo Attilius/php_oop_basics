@@ -56,6 +56,9 @@ class PhotoService
         }
     }
 
+    /**
+     * @throws SqlException
+     */
     public function getTotal()
     {
         if ($result = mysqli_query($this->connection, 'SELECT count(*) as count FROM photos')) {
