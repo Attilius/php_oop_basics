@@ -58,7 +58,11 @@ class Flash implements StorageInterface
         }
     }
 
-    public function remove($key)
+    /**
+     * @param $key
+     * @return void
+     */
+    public function remove($key): void
     {
         if ($this->session->has(self::KEY)){
             $flash = $this->session->get(self::KEY);
