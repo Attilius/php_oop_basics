@@ -6,6 +6,7 @@ use Dispatcher;
 use Request\Request;
 use Response\Response;
 use Response\ResponseFactory;
+use Response\ResponseInterface;
 
 class DispatchingMiddleware implements MiddlewareInterface
 {
@@ -18,6 +19,12 @@ class DispatchingMiddleware implements MiddlewareInterface
         $this->responseFactory = $responseFactory;
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     * @return Response|ResponseInterface|void
+     */
     public function process(Request $request, Response $response, callable $next)
     {
         $controllerResult = $this->dispatcher->dispatch($request);
