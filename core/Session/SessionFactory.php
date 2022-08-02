@@ -2,12 +2,17 @@
 
 namespace Session;
 
+use Exception;
+
 class SessionFactory
 {
     /**
-     * @return SessionInterface
+     * @param $driver
+     * @param array $config
+     * @return BuiltInSession|FileSession
+     * @throws Exception
      */
-    public static function build($driver, array $config)
+    public static function build($driver, array $config): BuiltInSession|FileSession
     {
         switch ($driver){
             case 'file':
@@ -15,7 +20,7 @@ class SessionFactory
             case 'default':
                 return new BuiltInSession();
             default:
-                throw new \Exception("No driver found for key ". $driver);
+                throw new Exception("No driver found for key ". $driver);
         }
     }
 }
