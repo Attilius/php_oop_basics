@@ -23,7 +23,7 @@ class ServiceContainer
                 $this->definitions[$service] = $factory($this);
             }
         } else {
-            throw new Exception\ServiceNotFoundException($service);
+            throw new ServiceNotFoundException($service);
         }
         return $this->definitions[$service];
     }
