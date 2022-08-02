@@ -16,8 +16,12 @@ class ViewRenderer
         $this->translator = $translator;
     }
 
-
-    public function render(ModelAndView $modelAndView, string $locale)
+    /**
+     * @param ModelAndView $modelAndView
+     * @param string $locale
+     * @return false|string
+     */
+    public function render(ModelAndView $modelAndView, string $locale): false|string
     {
         extract($modelAndView->getModel());
         $view = $modelAndView->getViewName();
