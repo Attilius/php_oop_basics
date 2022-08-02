@@ -71,7 +71,10 @@ class Flash implements StorageInterface
         }
     }
 
-    public function clear()
+    /**
+     * @return void
+     */
+    public function clear(): void
     {
         $this->session->remove(self::KEY);
     }
