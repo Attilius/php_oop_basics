@@ -11,6 +11,10 @@ class Application
         $this->container = $container;
     }
 
+    /**
+     * @param string $basePath
+     * @return void
+     */
     public function start(string $basePath): void
     {
         try {
