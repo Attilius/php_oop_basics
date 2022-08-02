@@ -14,6 +14,10 @@ class Flash implements StorageInterface
         $this->session = $session;
     }
 
+    /**
+     * @param $key
+     * @return bool|void
+     */
     public function has($key)
     {
         if ($this->session->has(self::KEY)){
