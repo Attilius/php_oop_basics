@@ -15,6 +15,11 @@ class ResponseFactory
         $this->viewRenderer = $viewRenderer;
     }
 
+    /**
+     * @param $controllerResult
+     * @param Request $request
+     * @return Response|ResponseInterface|void
+     */
     public function createResponse($controllerResult, Request $request)
     {
         if ($controllerResult instanceof ResponseInterface){
