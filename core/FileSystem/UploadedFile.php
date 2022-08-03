@@ -15,6 +15,10 @@ class UploadedFile implements FileInterface
         $this->error = $error;
     }
 
+    /**
+     * @param $target
+     * @return LocalFile
+     */
     public function moveTo($target): LocalFile
     {
         move_uploaded_file($this->getTemporaryName(), $target);
