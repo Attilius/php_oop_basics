@@ -15,6 +15,11 @@ class ResponseEmitter
         $response->emitBody();
     }
 
+    /**
+     * @param int $statusCode
+     * @param string $reasonPhrase
+     * @return void
+     */
     private function emitStatusLine(int $statusCode, string $reasonPhrase): void
     {
         header(sprintf(
