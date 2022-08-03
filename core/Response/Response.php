@@ -20,7 +20,7 @@ class Response implements ResponseInterface
     /**
      * @return void
      */
-    public function emitBody()
+    public function emitBody(): void
     {
         echo $this->body;
     }
