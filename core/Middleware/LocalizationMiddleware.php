@@ -17,6 +17,11 @@ class LocalizationMiddleware implements MiddlewareInterface
         $this->availableLocales = $availableLocales;
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
+     */
     public function process(Request $request, Response $response, callable $next)
     {
         $localeFromRequest = "";
