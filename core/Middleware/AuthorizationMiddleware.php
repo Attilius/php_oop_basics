@@ -12,12 +12,6 @@ class AuthorizationMiddleware implements MiddlewareInterface
     private AuthService $authService;
     private string $loginUrl;
 
-    /**
-     * AuthorizationMiddleware constructor
-     * @param string[] $protectedUrls
-     * @param AuthService $authService
-     * @param string $loginUrl
-     */
     public function __construct(array $protectedUrls, AuthService $authService, string $loginUrl)
     {
         $this->protectedUrls = $protectedUrls;
