@@ -11,6 +11,10 @@ class LocalFile implements FileInterface
         $this->name = $name;
     }
 
+    /**
+     * @param $target
+     * @return void
+     */
     public function moveTo($target): void
     {
         rename($this->name, $target);
