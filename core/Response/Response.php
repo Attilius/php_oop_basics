@@ -6,7 +6,7 @@ class Response implements ResponseInterface
 {
     private string $body;
     private array $headers;
-    private $statusCode;
+    private int $statusCode;
     private $reasonPhrase;
 
     public function __construct(string $body, array $headers, int $statusCode, string $reasonPhrase)
