@@ -5,7 +5,7 @@ namespace Response;
 class Response implements ResponseInterface
 {
     private string $body;
-    private $headers;
+    private array $headers;
     private $statusCode;
     private $reasonPhrase;
 
