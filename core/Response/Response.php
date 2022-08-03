@@ -17,6 +17,9 @@ class Response implements ResponseInterface
         $this->reasonPhrase = $reasonPhrase;
     }
 
+    /**
+     * @return void
+     */
     public function emitBody()
     {
         echo $this->body;
