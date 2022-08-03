@@ -4,6 +4,10 @@ namespace Response;
 
 class ResponseEmitter
 {
+    /**
+     * @param ResponseInterface $response
+     * @return void
+     */
     public function emit(ResponseInterface $response): void
     {
         $this->emitStatusLine($response->getStatusCode(), $response->getReasonPhrase());
