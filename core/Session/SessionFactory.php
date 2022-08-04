@@ -14,13 +14,10 @@ class SessionFactory
      */
     public static function build($driver, array $config): BuiltInSession|FileSession
     {
-        switch ($driver){
-            case 'file':
-                return new FileSession($config);
-            case 'default':
-                return new BuiltInSession();
-            default:
-                throw new Exception("No driver found for key ". $driver);
-        }
+        return match ($driver) {
+            'file' => new FileSession($config),
+            'default' => new BuiltInSession(),
+            default => throw new Exception("No driver found for key " . $driver),
+        };
     }
 }
