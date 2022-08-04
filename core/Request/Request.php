@@ -62,7 +62,11 @@ class Request
         return $this->params;
     }
 
-    public function getParam($fieldName)
+    /**
+     * @param $fieldName
+     * @return array|null
+     */
+    public function getParam($fieldName): array|null
     {
         if (!array_key_exists($fieldName, $this->params)){
             return null;
