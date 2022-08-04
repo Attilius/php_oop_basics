@@ -13,7 +13,7 @@ class Request
     private string $method;
     private SessionInterface $session;
     private array $files;
-    private $locale;
+    private ?string $locale;
 
     public function __construct(string $uri, string $method, SessionInterface $session, string $body = null,
                                 array $headers = [], array $cookies = [], array $params = [], array $files = [],
