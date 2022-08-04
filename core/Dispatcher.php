@@ -35,6 +35,11 @@ class Dispatcher
         return $this->invokeHandler($this->notFoundController, $matches);
     }
 
+    /**
+     * @param $callable
+     * @param $matches
+     * @throws ServiceNotFoundException
+     */
     private function invokeHandler($callable, $matches)
     {
         if (strpos($callable,'@')){
