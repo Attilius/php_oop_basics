@@ -35,6 +35,10 @@ class Validator
         return $constraintsInstances;
     }
 
+    /**
+     * @param string $identifier
+     * @return Constraint
+     */
     private function createConstraint(string $identifier): Constraint
     {
         list($constraint, $param) = array_pad(explode(":", $identifier), 2, null);
