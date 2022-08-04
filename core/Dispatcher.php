@@ -21,6 +21,10 @@ class Dispatcher
         $this->routes[strtoupper($method)][$pattern] = $callable;
     }
 
+    /**
+     * @param Request $request
+     * @throws ServiceNotFoundException
+     */
     public function dispatch(Request $request)
     {
         $method = $request->getMethod();
