@@ -66,7 +66,7 @@ class Request
      * @param $fieldName
      * @return array|null
      */
-    public function getParam($fieldName): array|null
+    public function getParam($fieldName): ?array
     {
         if (!array_key_exists($fieldName, $this->params)){
             return null;
