@@ -29,6 +29,10 @@ class ResponseEmitter
         ), true, $statusCode);
     }
 
+    /**
+     * @param array $headers
+     * @return void
+     */
     private function emitHeaders(array $headers): void
     {
         foreach ($headers as $key => $value){
