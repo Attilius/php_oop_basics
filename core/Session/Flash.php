@@ -28,7 +28,7 @@ class Flash implements StorageInterface
 
     /**
      * @param $key
-     * @return mixed|void
+     * @return array|void
      */
     public function get($key)
     {
