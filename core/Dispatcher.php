@@ -1,5 +1,6 @@
 <?php
 
+use Exception\ServiceNotFoundException;
 use Request\Request;
 
 class Dispatcher
@@ -43,6 +44,11 @@ class Dispatcher
         }
     }
 
+    /**
+     * @param string $callable
+     * @param $matches
+     * @throws ServiceNotFoundException
+     */
     private function invokeFromContainer(string $callable, $matches)
     {
         $pair = explode('@', $callable);
