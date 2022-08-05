@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @param $level
+ * @param $message
+ * @return void
+ */
 function logMessage($level, $message){
     $file = fopen('application.log', "a");
     fwrite($file,"[$level] $message".PHP_EOL);
