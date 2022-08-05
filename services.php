@@ -17,7 +17,7 @@ use Controllers\Image\SingleImageEditController;
 use Controllers\Locale\LocaleChangeController;
 use Controllers\NotFoundController;
 use Exception\SqlException;
-use Laminas\I18n\Translator\Loader\Gettext;
+//use Laminas\I18n\Translator\Loader\Gettext;
 use Laminas\I18n\Translator\Loader\PhpArray;
 use Laminas\I18n\Translator\Translator;
 use Middleware\AuthorizationMiddleware;
@@ -51,7 +51,6 @@ return [
         return new ResponseFactory($container->get("viewRenderer"));
     },
     "viewRenderer" => function(ServiceContainer $container){
-
         return new ViewRenderer($container->get("basePath"), $container->get("csrf"), $container->get("translator"));
     },
     "responseEmitter" => function(){
