@@ -12,7 +12,8 @@ function logMessage($level, $message): void
     fclose($file);
 }
 
-function paginate($total, $currentPage, $size): string {
+function paginate($total, $currentPage, $size): string
+{
     $page = 0;
     $markup = "";
     if ($currentPage > 1){
