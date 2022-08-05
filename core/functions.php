@@ -48,7 +48,8 @@ function paginate($total, $currentPage, $size): string
     return $markup;
 }
 
-function esc($string){
+function esc($string)
+{
     echo htmlspecialchars($string);
 }
 
