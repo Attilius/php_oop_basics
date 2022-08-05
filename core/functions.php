@@ -12,6 +12,12 @@ function logMessage($level, $message): void
     fclose($file);
 }
 
+/**
+ * @param $total
+ * @param $currentPage
+ * @param $size
+ * @return string
+ */
 function paginate($total, $currentPage, $size): string
 {
     $page = 0;
