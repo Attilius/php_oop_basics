@@ -14,7 +14,7 @@ class ImageValidator extends ConstraintValidator
      * @param Constraint $constraint
      * @return void
      */
-    public function validate(mixed $value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$constraint instanceof Image){
             throw new UnexpectedTypeException($constraint, Image::class);
