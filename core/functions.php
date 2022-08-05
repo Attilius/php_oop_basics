@@ -48,6 +48,10 @@ function paginate($total, $currentPage, $size): string
     return $markup;
 }
 
+/**
+ * @param $string
+ * @return void
+ */
 function esc($string)
 {
     echo htmlspecialchars($string);
