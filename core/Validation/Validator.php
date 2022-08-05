@@ -12,6 +12,10 @@ use Validation\Constraint\Image;
 
 class Validator
 {
+    /**
+     * @param array $valueConstraintMap
+     * @return ConstraintViolationList
+     */
     public function validate(array $valueConstraintMap): ConstraintViolationList
     {
         $violations = new ConstraintViolationList();
