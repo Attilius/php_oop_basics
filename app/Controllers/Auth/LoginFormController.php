@@ -6,7 +6,6 @@ use Session\SessionInterface;
 
 class LoginFormController
 {
-
     private SessionInterface $session;
 
     public function __construct(SessionInterface $session)
