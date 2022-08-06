@@ -60,7 +60,7 @@ function esc($string): void
 /**
  * @return array
  */
-function createUser()
+function createUser(): array
 {
     $loggedIn = array_key_exists("user", $_SESSION);
     return [
