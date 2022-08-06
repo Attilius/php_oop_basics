@@ -57,7 +57,8 @@ function esc($string): void
     echo htmlspecialchars($string);
 }
 
-function createUser(){
+function createUser()
+{
     $loggedIn = array_key_exists("user", $_SESSION);
     return [
         "loggedIn" => $loggedIn,
