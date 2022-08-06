@@ -52,7 +52,7 @@ function paginate($total, $currentPage, $size): string
  * @param $string
  * @return void
  */
-function esc($string)
+function esc($string): void
 {
     echo htmlspecialchars($string);
 }
