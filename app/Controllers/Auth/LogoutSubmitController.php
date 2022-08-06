@@ -16,6 +16,9 @@ class LogoutSubmitController
         $this->authService = $authService;
     }
 
+    /**
+     * @return array
+     */
     public function submit(): array
     {
         $this->authService->logout();
