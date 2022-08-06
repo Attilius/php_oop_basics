@@ -38,6 +38,9 @@ class LoginSubmitController
         ];
     }
 
+    /**
+     * @return void
+     */
     private function markAsLoginFailed(): void
     {
         $this->session->put("containsError", 1);
