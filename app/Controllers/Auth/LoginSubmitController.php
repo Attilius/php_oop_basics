@@ -2,6 +2,7 @@
 
 namespace Controllers\Auth;
 
+use Exception\SqlException;
 use Services\AuthService;
 use Session\SessionInterface;
 
@@ -16,6 +17,10 @@ class LoginSubmitController
         $this->session = $session;
     }
 
+    /**
+     * @return array
+     * @throws SqlException
+     */
     function submit(): array
     {
         $password = trim($_POST["password"]);
