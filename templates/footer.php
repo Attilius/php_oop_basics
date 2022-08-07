@@ -110,6 +110,5 @@
     //     e.stopPropagation();
     // });
     //
-    // box.addEventListener("dragenter", () => {
 
 </script>
