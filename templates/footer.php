@@ -99,7 +99,5 @@
     // input.addEventListener("change", (e) => {
     //     droppedFiles = e.currentTarget.files;
     //     showFiles(droppedFiles);
-    // });
-    //
 
 </script>
