@@ -107,6 +107,5 @@
     //
     // box.addEventListener("drag dragstart dragend dragover dragenter dragleave drop", (e) => {
     //     e.preventDefault();
-    //     e.stopPropagation();
 
 </script>
