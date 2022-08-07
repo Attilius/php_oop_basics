@@ -105,6 +105,5 @@
     //     input.click();
     // });
     //
-    // box.addEventListener("drag dragstart dragend dragover dragenter dragleave drop", (e) => {
 
 </script>
