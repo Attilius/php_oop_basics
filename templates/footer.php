@@ -103,7 +103,5 @@
     //
     // label.addEventListener("click", () => {
     //     input.click();
-    // });
-    //
 
 </script>
