@@ -101,6 +101,5 @@
     //     showFiles(droppedFiles);
     // });
     //
-    // label.addEventListener("click", () => {
 
 </script>
