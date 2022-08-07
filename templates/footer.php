@@ -111,6 +111,5 @@
     // });
     //
     // box.addEventListener("dragenter", () => {
-    //     box.classList.add("is-dragover");
 
 </script>
