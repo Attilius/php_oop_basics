@@ -89,6 +89,5 @@
 
     // const form = document.getElementById('uploadform');
     // const box = document.getElementById('box');
-    // const input = document.getElementById('upload-able');
 
 </script>
