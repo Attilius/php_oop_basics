@@ -93,6 +93,5 @@
     // const label = document.querySelector('.box-filelabel');
     // const showFiles = function (files){
     //          label.text(files[0].name);
-    //      }
 
 </script>
