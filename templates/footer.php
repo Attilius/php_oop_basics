@@ -87,6 +87,5 @@
         })
     });
 
-    // const form = document.getElementById('uploadform');
 
 </script>
