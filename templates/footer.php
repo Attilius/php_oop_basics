@@ -88,6 +88,5 @@
     });
 
     // const form = document.getElementById('uploadform');
-    // const box = document.getElementById('box');
 
 </script>
