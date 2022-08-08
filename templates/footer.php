@@ -97,6 +97,5 @@
     // let droppedFiles = false;
     //
     // input.addEventListener("change", (e) => {
-    //     droppedFiles = e.currentTarget.files;
 
 </script>
