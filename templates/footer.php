@@ -96,6 +96,5 @@
     //      }
     // let droppedFiles = false;
     //
-    // input.addEventListener("change", (e) => {
 
 </script>
