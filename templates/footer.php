@@ -94,7 +94,5 @@
     // const showFiles = function (files){
     //          label.text(files[0].name);
     //      }
-    // let droppedFiles = false;
-    //
 
 </script>
