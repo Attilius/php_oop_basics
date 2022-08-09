@@ -13,6 +13,11 @@ class SingleImageDeleteController
         $this->photoService = $photoService;
     }
 
+    /**
+     * @param array $params
+     * @return array
+     * @throws \Exception\SqlException
+     */
     function delete(array $params): array
     {
         $id = $params["id"];
