@@ -2,6 +2,7 @@
 
 namespace Controllers\Image;
 
+use Exception\SqlException;
 use Services\PhotoService;
 
 class SingleImageController
@@ -16,7 +17,7 @@ class SingleImageController
     /**
      * @param $params
      * @return array
-     * @throws \Exception\SqlException
+     * @throws SqlException
      */
     function display($params): array
     {
