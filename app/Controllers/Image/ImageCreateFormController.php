@@ -13,6 +13,9 @@ class ImageCreateFormController
         $this->session = $session;
     }
 
+    /**
+     * @return array
+     */
     public function show(): array
     {
         $violations = $this->session->flash()->get("violations");
