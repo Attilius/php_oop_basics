@@ -2,6 +2,7 @@
 
 namespace Controllers\Image;
 
+use Exception\SqlException;
 use Services\PhotoService;
 
 class HomeController
