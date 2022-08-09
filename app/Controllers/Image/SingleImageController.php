@@ -13,6 +13,11 @@ class SingleImageController
         $this->photoService = $photoService;
     }
 
+    /**
+     * @param $params
+     * @return array
+     * @throws \Exception\SqlException
+     */
     function display($params): array
     {
         $image = $this->photoService->getImageById($params['id']);
