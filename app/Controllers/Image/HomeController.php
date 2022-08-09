@@ -13,6 +13,10 @@ class HomeController
         $this->photoService = $photoService;
     }
 
+    /**
+     * @return array
+     * @throws SqlException
+     */
     function handle(): array
     {
         $size = $_GET['size'] ?? 10; // (??) if $_GET['size] = null -> default value = 10
