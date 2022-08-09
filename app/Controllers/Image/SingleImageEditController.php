@@ -2,6 +2,7 @@
 
 namespace Controllers\Image;
 
+use Exception\SqlException;
 use Services\PhotoService;
 
 class SingleImageEditController
@@ -16,7 +17,7 @@ class SingleImageEditController
     /**
      * @param $params
      * @return array
-     * @throws \Exception\SqlException
+     * @throws SqlException
      */
     function edit($params)
     {
