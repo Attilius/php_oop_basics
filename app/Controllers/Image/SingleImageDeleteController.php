@@ -2,6 +2,7 @@
 
 namespace Controllers\Image;
 
+use Exception\SqlException;
 use Services\PhotoService;
 
 class SingleImageDeleteController
@@ -16,7 +17,7 @@ class SingleImageDeleteController
     /**
      * @param array $params
      * @return array
-     * @throws \Exception\SqlException
+     * @throws SqlException
      */
     function delete(array $params): array
     {
