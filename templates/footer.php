@@ -82,7 +82,6 @@
                         label.text('Upload error');
                     }
                 }
-
             })
         })
     });
