@@ -13,6 +13,11 @@ class SingleImageEditController
         $this->photoService = $photoService;
     }
 
+    /**
+     * @param $params
+     * @return array
+     * @throws \Exception\SqlException
+     */
     function edit($params)
     {
         $title = $_POST["title"];
