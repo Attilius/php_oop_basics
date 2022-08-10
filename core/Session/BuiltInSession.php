@@ -32,6 +32,10 @@ class BuiltInSession implements SessionInterface
         $_SESSION[$key] = $value;
     }
 
+    /**
+     * @param $key
+     * @return void
+     */
     public function remove($key)
     {
         unset($_SESSION[$key]);
