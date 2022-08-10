@@ -8,7 +8,7 @@ class BuiltInSession implements SessionInterface
      * @param $key
      * @return bool
      */
-    public function has($key)
+    public function has($key): bool
     {
         return array_key_exists($key, $_SESSION);
     }
