@@ -49,6 +49,9 @@ class BuiltInSession implements SessionInterface
         unset($_SESSION);
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return $_SESSION;
