@@ -17,7 +17,7 @@ class BuiltInSession implements SessionInterface
      * @param $key
      * @return string
      */
-    public function get($key)
+    public function get($key): string
     {
         return $_SESSION[$key];
     }
