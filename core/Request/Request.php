@@ -64,9 +64,9 @@ class Request
 
     /**
      * @param $fieldName
-     * @return array|null
+     * @return string|null
      */
-    public function getParam($fieldName)
+    public function getParam($fieldName): ?string
     {
         if (!array_key_exists($fieldName, $this->params)){
             return null;
