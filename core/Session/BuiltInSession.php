@@ -27,7 +27,7 @@ class BuiltInSession implements SessionInterface
      * @param $value
      * @return void
      */
-    public function put($key, $value)
+    public function put($key, $value): void
     {
         $_SESSION[$key] = $value;
     }
