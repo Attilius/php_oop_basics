@@ -41,6 +41,9 @@ class BuiltInSession implements SessionInterface
         unset($_SESSION[$key]);
     }
 
+    /**
+     * @return void
+     */
     public function clear()
     {
         unset($_SESSION);
