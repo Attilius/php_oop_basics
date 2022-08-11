@@ -52,7 +52,7 @@ class BuiltInSession implements SessionInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $_SESSION;
     }
