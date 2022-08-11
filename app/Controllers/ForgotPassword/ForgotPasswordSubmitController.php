@@ -31,6 +31,9 @@ class ForgotPasswordSubmitController
         ];
     }
 
+    /**
+     * @return void
+     */
     private function markForgotPasswordSent()
     {
         $this->request->getSession()->put("sentPassword", 1);
