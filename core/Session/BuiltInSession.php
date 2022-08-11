@@ -60,7 +60,7 @@ class BuiltInSession implements SessionInterface
     /**
      * @return Flash
      */
-    public function flash()
+    public function flash(): Flash
     {
         return new Flash($this);
     }
