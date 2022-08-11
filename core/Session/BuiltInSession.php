@@ -36,7 +36,7 @@ class BuiltInSession implements SessionInterface
      * @param $key
      * @return void
      */
-    public function remove($key)
+    public function remove($key): void
     {
         unset($_SESSION[$key]);
     }
