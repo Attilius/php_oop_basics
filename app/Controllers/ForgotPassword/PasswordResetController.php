@@ -13,6 +13,9 @@ class PasswordResetController
         $this->request = $request;
     }
 
+    /**
+     * @return array
+     */
     public function show(): array
     {
         return [
