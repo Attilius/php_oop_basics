@@ -2,6 +2,7 @@
 
 namespace Controllers\ForgotPassword;
 
+use Exception\SqlException;
 use Request\Request;
 use Services\ForgotPasswordService;
 
@@ -18,7 +19,7 @@ class PasswordResetSubmitController
 
     /**
      * @return string[]
-     * @throws \Exception\SqlException
+     * @throws SqlException
      */
     public function submit(): array
     {
