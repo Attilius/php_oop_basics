@@ -39,6 +39,9 @@ class PasswordResetController
         return $this->getAndDeleteFormSession("resetPassword");
     }
 
+    /**
+     * @param $key
+     */
     private function getAndDeleteFormSession($key)
     {
         $has = $this->request->getSession()->has($key);
