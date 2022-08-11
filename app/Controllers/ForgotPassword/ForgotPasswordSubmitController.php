@@ -17,6 +17,9 @@ class ForgotPasswordSubmitController
         $this->service = $service;
     }
 
+    /**
+     * @return array
+     */
     public function submit(): array
     {
         $this->markForgotPasswordSent();
