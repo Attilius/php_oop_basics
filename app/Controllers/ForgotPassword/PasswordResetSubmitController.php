@@ -16,6 +16,10 @@ class PasswordResetSubmitController
         $this->service = $service;
     }
 
+    /**
+     * @return string[]
+     * @throws \Exception\SqlException
+     */
     public function submit(): array
     {
         $params = $this->request->getParams();
