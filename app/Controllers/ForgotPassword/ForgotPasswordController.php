@@ -13,6 +13,9 @@ class ForgotPasswordController
         $this->session = $session;
     }
 
+    /**
+     * @return array
+     */
     public function show(): array
     {
         return [
