@@ -4,6 +4,9 @@ namespace Controllers;
 
 class NotFoundController
 {
+    /**
+     * @return array
+     */
     function handle(): array
     {
         return [
