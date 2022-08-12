@@ -45,7 +45,7 @@ class PasswordResetSubmitController
      * @return bool
      * @throws SqlException
      */
-    private function validate($params)
+    private function validate($params): bool
     {
         $password = $params["password"];
         $passwordConf = $params["password_confirmation"];
