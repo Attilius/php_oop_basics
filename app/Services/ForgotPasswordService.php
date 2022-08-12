@@ -20,6 +20,11 @@ class ForgotPasswordService
         $this->baseUrl = $baseUrl;
     }
 
+    /**
+     * @param $email
+     * @return void
+     * @throws SqlException
+     */
     public function forgotPassword($email)
     {
         if ($this->userExist($email)){
