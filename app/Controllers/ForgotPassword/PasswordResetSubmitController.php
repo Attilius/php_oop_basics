@@ -40,6 +40,11 @@ class PasswordResetSubmitController
         }
     }
 
+    /**
+     * @param $params
+     * @return bool
+     * @throws SqlException
+     */
     private function validate($params)
     {
         $password = $params["password"];
