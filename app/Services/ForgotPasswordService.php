@@ -33,6 +33,11 @@ class ForgotPasswordService
         }
     }
 
+    /**
+     * @param $email
+     * @return bool
+     * @throws SqlException
+     */
     private function userExist($email)
     {
         if ($statement = $this->connection->prepare("SELECT name FROM users WHERE email = ?")){
