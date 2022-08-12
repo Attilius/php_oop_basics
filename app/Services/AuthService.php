@@ -17,6 +17,12 @@ class AuthService
         $this->session = $session;
     }
 
+    /**
+     * @param $email
+     * @param $password
+     * @return bool
+     * @throws SqlException
+     */
     public function loginUser($email, $password): bool
     {
         if ($statement = mysqli_prepare($this->connection, 'SELECT name, password, locale FROM users WHERE email = ?'))
