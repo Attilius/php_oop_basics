@@ -25,7 +25,7 @@ class ForgotPasswordService
      * @return void
      * @throws SqlException
      */
-    public function forgotPassword($email)
+    public function forgotPassword($email): void
     {
         if ($this->userExist($email)){
             $token = $this->createForgotPasswordToken($email);
