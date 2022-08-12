@@ -54,6 +54,11 @@ class ForgotPasswordService
         return false;
     }
 
+    /**
+     * @param $token
+     * @return bool
+     * @throws SqlException
+     */
     public function checkTokenExist($token)
     {
         if ($statement = $this->connection->prepare("SELECT count(*) as total FROM password_reset WHERE token = ? AND expiry > ?")) {
