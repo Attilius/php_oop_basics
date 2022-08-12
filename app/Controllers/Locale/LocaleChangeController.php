@@ -15,6 +15,10 @@ class LocaleChangeController
         $this->request = $request;
     }
 
+    /**
+     * @param $params
+     * @return array
+     */
     public function change($params): array
     {
         $locale = $params["locale"];
