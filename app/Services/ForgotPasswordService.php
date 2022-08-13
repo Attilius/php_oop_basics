@@ -73,6 +73,11 @@ class ForgotPasswordService
         }
     }
 
+    /**
+     * @param $email
+     * @return false|string
+     * @throws SqlException
+     */
     private function createForgotPasswordToken($email)
     {
         $token = hash("sha256", uniqid(time(), true));
