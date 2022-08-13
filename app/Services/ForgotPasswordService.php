@@ -75,7 +75,7 @@ class ForgotPasswordService
 
     /**
      * @param $email
-     * @return false|string
+     * @return string
      * @throws SqlException
      */
     private function createForgotPasswordToken($email): string
