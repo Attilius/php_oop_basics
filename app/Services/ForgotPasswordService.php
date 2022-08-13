@@ -140,7 +140,7 @@ class ForgotPasswordService
      * @return string
      * @throws SqlException
      */
-    private function getEmailWithToken($token)
+    private function getEmailWithToken($token): string
     {
        if ($statement = $this->connection->prepare("SELECT email FROM password_reset WHERE token = ?")) {
            $statement->bind_param("s", $token);
