@@ -103,6 +103,11 @@ class ForgotPasswordService
         $this->mailer->send($message);
     }
 
+    /**
+     * @param $email
+     * @return void
+     * @throws SqlException
+     */
     private function deleteTokensForEmail($email)
     {
         if ($statement = $this->connection->prepare("DELETE FROM password_reset WHERE email = ?")){
