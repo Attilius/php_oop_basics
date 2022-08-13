@@ -91,7 +91,7 @@ class ForgotPasswordService
      * @param string $token
      * @return void
      */
-    private function addToken($email, string $token)
+    private function addToken($email, string $token): void
     {
         $message = new Swift_Message();
         $message->addFrom("photo@galery.com", "Photos page");
