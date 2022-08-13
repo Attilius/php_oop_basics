@@ -108,7 +108,7 @@ class ForgotPasswordService
      * @return void
      * @throws SqlException
      */
-    private function deleteTokensForEmail($email)
+    private function deleteTokensForEmail($email): void
     {
         if ($statement = $this->connection->prepare("DELETE FROM password_reset WHERE email = ?")){
             $statement->bind_param("s", $email);
