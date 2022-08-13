@@ -86,6 +86,11 @@ class ForgotPasswordService
         return $token;
     }
 
+    /**
+     * @param $email
+     * @param string $token
+     * @return void
+     */
     private function addToken($email, string $token)
     {
         $message = new Swift_Message();
