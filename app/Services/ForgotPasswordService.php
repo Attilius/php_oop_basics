@@ -78,7 +78,7 @@ class ForgotPasswordService
      * @return false|string
      * @throws SqlException
      */
-    private function createForgotPasswordToken($email)
+    private function createForgotPasswordToken($email): string
     {
         $token = hash("sha256", uniqid(time(), true));
         $this->deleteTokensForEmail($email);
