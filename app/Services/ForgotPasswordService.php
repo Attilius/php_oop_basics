@@ -124,7 +124,7 @@ class ForgotPasswordService
      * @return void
      * @throws SqlException
      */
-    private function sendForgotPasswordEmail($email, string $token)
+    private function sendForgotPasswordEmail($email, string $token): void
     {
         if ($statement = $this->connection->prepare("INSERT INTO password_reset (email, token, expiry) VALUES (?,?,?)")){
             $expiry = date("Y-m-d H:i:s", time() + 7200);
