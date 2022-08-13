@@ -118,6 +118,12 @@ class ForgotPasswordService
         }
     }
 
+    /**
+     * @param $email
+     * @param string $token
+     * @return void
+     * @throws SqlException
+     */
     private function sendForgotPasswordEmail($email, string $token)
     {
         if ($statement = $this->connection->prepare("INSERT INTO password_reset (email, token, expiry) VALUES (?,?,?)")){
