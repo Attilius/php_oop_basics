@@ -59,7 +59,7 @@ class ForgotPasswordService
      * @return bool
      * @throws SqlException
      */
-    public function checkTokenExist($token)
+    public function checkTokenExist($token): bool
     {
         if ($statement = $this->connection->prepare("SELECT count(*) as total FROM password_reset WHERE token = ? AND expiry > ?")) {
             $now = date("Y-m-d H:i:s");
