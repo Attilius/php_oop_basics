@@ -8,7 +8,7 @@ class Photo
     public string $thumbnail;
     public string $url;
 
-    public function __construct($id, string $title, string $thumbnail, $url)
+    public function __construct($id, string $title, string $thumbnail, string $url)
     {
         $this->id = $id;
         $this->title = $title;
