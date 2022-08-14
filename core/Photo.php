@@ -5,7 +5,7 @@ class Photo
 {
     public $id;
     public string $title;
-    public $thumbnail;
+    public string $thumbnail;
     public $url;
 
     public function __construct($id, string $title, $thumbnail, $url)
