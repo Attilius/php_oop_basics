@@ -159,7 +159,7 @@ class ForgotPasswordService
      * @return void
      * @throws SqlException
      */
-    public function updatePassword($token, $password)
+    public function updatePassword($token, $password): void
     {
         if ($statement = $this->connection->prepare("UPDATE users SET password = ? WHERE email = ?")){
             $email = $this->getEmailWithToken($token);
