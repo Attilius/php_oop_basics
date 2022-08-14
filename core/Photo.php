@@ -4,7 +4,7 @@
 class Photo
 {
     public $id;
-    public $title;
+    public string $title;
     public $thumbnail;
     public $url;
 
