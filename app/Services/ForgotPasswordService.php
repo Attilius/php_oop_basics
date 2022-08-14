@@ -13,7 +13,7 @@ class ForgotPasswordService
     private Swift_Mailer $mailer;
     private string $baseUrl;
 
-    public function __construct(mysqli $connection, Swift_Mailer $mailer, $baseUrl)
+    public function __construct(mysqli $connection, Swift_Mailer $mailer, string $baseUrl)
     {
         $this->connection = $connection;
         $this->mailer = $mailer;
