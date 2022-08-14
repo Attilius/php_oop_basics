@@ -177,7 +177,7 @@ class ForgotPasswordService
      * @return void
      * @throws SqlException
      */
-    private function deleteToken($token)
+    private function deleteToken($token): void
     {
         if ($statement = $this->connection->prepare("DELETE FROM password_reset WHERE token = ?")){
             $statement->bind_param("s", $token);
