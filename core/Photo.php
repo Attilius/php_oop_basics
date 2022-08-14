@@ -3,7 +3,7 @@
 
 class Photo
 {
-    public $id;
+    public string $id;
     public string $title;
     public string $thumbnail;
     public string $url;
