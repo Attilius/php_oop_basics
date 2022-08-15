@@ -8,7 +8,6 @@ ini_set("display_errors", "1");
 require_once "../core/functions.php";
 require_once "../vendor/autoload.php";
 
-//$locale = "hu_HU.utf8";
 
 //if (defined("LC_MESSAGES")){
 //    setlocale(LC_MESSAGES, $locale);
