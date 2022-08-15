@@ -46,7 +46,7 @@ class Photo
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getThumbnail()
     {
