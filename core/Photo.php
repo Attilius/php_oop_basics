@@ -48,7 +48,7 @@ class Photo
     /**
      * @return string
      */
-    public function getThumbnail()
+    public function getThumbnail(): string
     {
         return $this->thumbnail;
     }
