@@ -14,7 +14,6 @@ require_once "../vendor/autoload.php";
 //    bindtextdomain("messages", "../i18n");
 //} else {
 //    putenv("LC_ALL={$locale}");
-//    bindtextdomain("messages", "..\i18n");
 
 
 (new Application(new ServiceContainer(include "../services.php")))->start(realpath(__DIR__."/../")); // class member access on instantiation since php 5.4
