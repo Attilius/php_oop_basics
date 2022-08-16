@@ -46,7 +46,6 @@
                         <?php endforeach ?>
                     <?php endif ?>
                     <?= $_csrf ?>
-
                 </div>
                 <div class="box">
                     <div class="box_input">
