@@ -43,7 +43,7 @@ class PasswordResetController
      * @param $key
      * @return bool
      */
-    private function getAndDeleteFormSession($key)
+    private function getAndDeleteFormSession($key): bool
     {
         $has = $this->request->getSession()->has($key);
         $this->request->getSession()->remove($key);
