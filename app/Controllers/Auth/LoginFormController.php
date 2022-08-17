@@ -28,6 +28,9 @@ class LoginFormController
         ];
     }
 
+    /**
+     * @return bool
+     */
     private function checkForError()
     {
         $containsError = $this->session->has("containsError");
