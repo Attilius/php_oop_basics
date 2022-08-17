@@ -27,6 +27,9 @@ class ForgotPasswordController
         ];
     }
 
+    /**
+     * @return bool
+     */
     private function sent()
     {
         $sentPassword = $this->session->has("sentPassword");
