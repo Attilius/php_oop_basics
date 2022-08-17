@@ -30,7 +30,7 @@ class ForgotPasswordController
     /**
      * @return bool
      */
-    private function sent()
+    private function sent(): bool
     {
         $sentPassword = $this->session->has("sentPassword");
         $this->session->remove("sentPassword");
