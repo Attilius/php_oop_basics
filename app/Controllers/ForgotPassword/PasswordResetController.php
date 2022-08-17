@@ -32,7 +32,7 @@ class PasswordResetController
     /**
      * @return bool
      */
-    private function failed()
+    private function failed(): bool
     {
         return $this->getAndDeleteFormSession("failed");
     }
