@@ -37,7 +37,7 @@ class PasswordResetController
     /**
      * @return bool
      */
-    private function sent()
+    private function sent(): bool
     {
         return $this->getAndDeleteFormSession("resetPassword");
     }
