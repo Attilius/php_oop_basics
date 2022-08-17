@@ -31,7 +31,7 @@ class LoginFormController
     /**
      * @return bool
      */
-    private function checkForError()
+    private function checkForError(): bool
     {
         $containsError = $this->session->has("containsError");
         $this->session->remove("containsError");
