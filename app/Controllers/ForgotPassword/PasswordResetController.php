@@ -41,6 +41,7 @@ class PasswordResetController
 
     /**
      * @param $key
+     * @return bool
      */
     private function getAndDeleteFormSession($key)
     {
