@@ -29,6 +29,9 @@ class PasswordResetController
         ];
     }
 
+    /**
+     * @return bool
+     */
     private function failed()
     {
         return $this->getAndDeleteFormSession("failed");
