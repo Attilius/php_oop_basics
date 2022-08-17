@@ -44,6 +44,9 @@ class AuthService
         }
     }
 
+    /**
+     * @return bool
+     */
     public function check()
     {
        return $this->session->has("user");
