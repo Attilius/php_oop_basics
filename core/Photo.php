@@ -1,6 +1,5 @@
 <?php
 
-
 class Photo
 {
     public string $id;
