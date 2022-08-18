@@ -26,6 +26,9 @@ class FileSession implements SessionInterface
         return array_key_exists($key, $this->getData());
     }
 
+    /**
+     * @param $key
+     */
     public function get($key)
     {
         return $this->getData()[$key];
