@@ -26,7 +26,7 @@ class Redirect
      * @param $value
      * @return Redirect
      */
-    public function with($name, $value)
+    public function with($name, $value): Redirect
     {
         $this->flashMessages[$name] = $value;
         return $this;
