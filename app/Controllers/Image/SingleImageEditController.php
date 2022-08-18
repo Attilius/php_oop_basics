@@ -19,7 +19,7 @@ class SingleImageEditController
      * @return array
      * @throws SqlException
      */
-    function edit($params)
+    function edit($params): array
     {
         $title = $_POST["title"];
         $id = $params["id"];
