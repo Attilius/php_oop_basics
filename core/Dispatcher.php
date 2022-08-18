@@ -18,6 +18,7 @@ class Dispatcher
     /**
      * @param $action
      * @param $callable
+     * @param $method
      * @return void
      */
     public function addRoute($action, $callable, $method = "GET"): void
