@@ -21,6 +21,11 @@ class Redirect
         return new self($target);
     }
 
+    /**
+     * @param $name
+     * @param $value
+     * @return $this
+     */
     public function with($name, $value)
     {
         $this->flashMessages[$name] = $value;
