@@ -24,7 +24,7 @@ class Redirect
     /**
      * @param $name
      * @param $value
-     * @return $this
+     * @return Redirect
      */
     public function with($name, $value)
     {
