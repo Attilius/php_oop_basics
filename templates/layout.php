@@ -11,10 +11,10 @@
               crossorigin="anonymous">
     </head>
     <body>
-    <?php
-    require_once "header.php";
-    require_once "$view.php";
-    require_once "footer.php";
-    ?>
+        <?php
+        require_once "header.php";
+        require_once "$view.php";
+        require_once "footer.php";
+        ?>
     </body>
 </html>
