@@ -42,5 +42,4 @@ class ViewRenderer
         $csrfToken = $this->csrfTokenManager->getToken("_csrf")->getValue();
         return "<input type='hidden' name='_csrf' value='${csrfToken}'/>";
     }
-
 }
