@@ -68,4 +68,3 @@ function createUser(): array
         "name" => $loggedIn ? $_SESSION["user"]["name"] : null
     ];
 }
-
