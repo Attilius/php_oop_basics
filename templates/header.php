@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
     <a class="navbar-brand mx-2" href="/"><?= $trans("My images") ?></a>
     <div class="navbar-collapse collapse ">
