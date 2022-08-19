@@ -30,7 +30,6 @@
     .box.is-uploading .box_uploading{
         display: block;
     }
-
 </style>
 
 <main class="container mt-5">
