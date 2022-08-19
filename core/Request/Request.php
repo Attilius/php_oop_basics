@@ -1,4 +1,5 @@
 <?php
+
 namespace Request;
 
 use Session\SessionInterface;
