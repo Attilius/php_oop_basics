@@ -9,5 +9,4 @@ interface ResponseInterface
     public function getHeaders(): array;
     public function getStatusCode(): int;
     public function getReasonPhrase(): string;
-
 }
