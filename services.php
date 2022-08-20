@@ -159,6 +159,7 @@ return [
         $pipeLine->addMiddleware(new FlashMessageCleanupMiddleware());
         $pipeLine->addMiddleware(new LocalizationMiddleware($config["default_locale"], $config["available_locales"]));
         $pipeLine->addMiddleware($dispatcherMiddleware); // This is last in stack
+
         return $pipeLine;
     },
     "baseUrl" => function(){
