@@ -177,6 +177,7 @@ return [
         $dispatcher->addRoute('/image/(?<id>[\d]+)/edit', 'singleImageEditController@edit', 'POST');
         $dispatcher->addRoute('/image/(?<id>[\d]+)/delete', 'singleImageDeleteController@delete', 'POST');
         $dispatcher->addRoute('/private/(?<id>[a-z\.0-9]+)', 'imageServeController@show');
+
         $dispatcher->addRoute('/login', 'loginFormController@show');
         $dispatcher->addRoute('/logout', 'logoutSubmitController@submit');
         $dispatcher->addRoute('/login', 'loginSubmitController@submit','POST');
