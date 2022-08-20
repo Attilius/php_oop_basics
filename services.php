@@ -184,6 +184,7 @@ return [
 
         $dispatcher->addRoute('/register', 'registerFormController@show');
         $dispatcher->addRoute('/register', 'registerSubmitController@submit','POST');
+
         $dispatcher->addRoute('/forgotpass', 'forgotPasswordController@show');
         $dispatcher->addRoute('/forgotpass', 'forgotPasswordSubmitController@submit','POST');
         $dispatcher->addRoute('/reset', 'passwordResetController@show');
