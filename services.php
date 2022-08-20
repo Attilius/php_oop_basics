@@ -192,6 +192,7 @@ return [
 
         $dispatcher->addRoute('/image/add', 'imageCreateFormController@show');
         $dispatcher->addRoute('/image/add', 'imageCreateSubmitController@submit','POST');
+
         $dispatcher->addRoute('/locale/(?<locale>[a-z_A-Z]+)', 'localeChangeController@change');
 
         return $dispatcher;
