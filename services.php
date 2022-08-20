@@ -189,6 +189,7 @@ return [
         $dispatcher->addRoute('/forgotpass', 'forgotPasswordSubmitController@submit','POST');
         $dispatcher->addRoute('/reset', 'passwordResetController@show');
         $dispatcher->addRoute('/reset', 'passwordResetSubmitController@submit','POST');
+
         $dispatcher->addRoute('/image/add', 'imageCreateFormController@show');
         $dispatcher->addRoute('/image/add', 'imageCreateSubmitController@submit','POST');
         $dispatcher->addRoute('/locale/(?<locale>[a-z_A-Z]+)', 'localeChangeController@change');
