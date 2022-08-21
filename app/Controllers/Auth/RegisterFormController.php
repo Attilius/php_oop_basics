@@ -12,4 +12,14 @@ class RegisterFormController
     {
         $this->session = $session;
     }
+
+    /**
+     * @return bool
+     */
+    private function checkForError(): bool
+    {
+        $containsError = $this->session->has("containsError");
+        $this->session->remove("containsError");
+        return $containsError;
+    }
 }
