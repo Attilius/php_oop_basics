@@ -13,6 +13,9 @@ class RegisterFormController
         $this->session = $session;
     }
 
+    /**
+     * @return array
+     */
     public function show()
     {
         $containsError = $this->checkForError();
