@@ -16,6 +16,13 @@ class RegisterFormController
     public function show()
     {
         $containsError = $this->checkForError();
+        return [
+            "register",
+            [
+                "title" => "Register",
+                "containsError" => $containsError
+            ]
+        ];
     }
 
     /**
