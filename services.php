@@ -102,7 +102,7 @@ return [
     "logoutSubmitController" => function(ServiceContainer $container){
         return new LogoutSubmitController($container->get("authService"));
     },
-    "registerFormController" => function(){
+    "registerFormController" => function(ServiceContainer $container){
         return new RegisterFormController();
     },
     "registerSubmitController" => function(){
