@@ -16,7 +16,7 @@ class RegisterFormController
     /**
      * @return array
      */
-    public function show()
+    public function show(): array
     {
         $containsError = $this->checkForError();
         return [
