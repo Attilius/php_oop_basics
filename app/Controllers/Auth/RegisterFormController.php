@@ -15,7 +15,7 @@ class RegisterFormController
 
     public function show()
     {
-
+        $containsError = $this->checkForError();
     }
 
     /**
