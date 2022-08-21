@@ -13,6 +13,11 @@ class RegisterFormController
         $this->session = $session;
     }
 
+    public function show()
+    {
+
+    }
+
     /**
      * @return bool
      */
