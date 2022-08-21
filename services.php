@@ -3,6 +3,7 @@
 use Controllers\Auth\LoginFormController;
 use Controllers\Auth\LoginSubmitController;
 use Controllers\Auth\LogoutSubmitController;
+use Controllers\Auth\RegisterFormController;
 use Controllers\ForgotPassword\ForgotPasswordController;
 use Controllers\ForgotPassword\ForgotPasswordSubmitController;
 use Controllers\ForgotPassword\PasswordResetController;
