@@ -8,7 +8,7 @@
             <label for="password"><?= $trans("Password"); ?></label>
         </div>
         <div class="form-group">
-
+            <label for="password"><?= $trans("Password again"); ?></label>
         </div>
         <button class="btn btn-primary mt-2" type="submit"><?= $trans("Register"); ?></button>
     </form>
