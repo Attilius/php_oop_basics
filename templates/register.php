@@ -5,7 +5,7 @@
             <input class="form-control" type="email" name="email" id="email" placeholder="<?= $trans("Enter your email address") . "..."; ?>">
         </div>
         <div class="form-group">
-
+            <label for="password"><?= $trans("Password"); ?></label>
         </div>
         <div class="form-group">
 
