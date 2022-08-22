@@ -9,5 +9,6 @@
         <div class="form-group">
 
         </div>
+        <button class="btn btn-primary mt-2" type="submit"><?= $trans("Register"); ?></button>
     </form>
 </main>
