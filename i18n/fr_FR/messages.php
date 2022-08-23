@@ -8,6 +8,7 @@ return [
     "Forgot password" => "Mot de passe oublié",
     "Login" => "Login",
     "Password" => "Mot de passe",
+    "Password again" => "Encore une fois mot de passe",
     "Email address" => "Adresse e-mail",
     "The username or password aren't matching" => "Le nom d'utilisateur ou le mot de passe ne correspondent pas",
     "Enter your email address" => "Entrez votre adresse e-mail",
