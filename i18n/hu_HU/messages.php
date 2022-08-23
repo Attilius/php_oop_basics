@@ -8,6 +8,7 @@ return [
     "Forgot password" => "Elfelejtett jelszó",
     "Login" => "Bejelentkezés",
     "Password" => "Jelszó",
+    "Password again" => "Jelszó újra",
     "Email address" => "E-mail cím",
     "The username or password aren't matching" => "Hibás felhasználónév vagy jelszó",
     "Enter your email address" => "Add meg az e-mail címed",
