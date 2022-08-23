@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="password"><?= $trans("Password again"); ?></label>
-            <input class="form-control" type="password" name="password" id="password" placeholder="<?= $trans("Enter your password") . "..."; ?>">
+            <input class="form-control" type="password" name="password" id="password" placeholder="<?= $trans("Enter your password again") . "..."; ?>">
         </div>
         <button class="btn btn-primary mt-2" type="submit"><?= $trans("Register"); ?></button>
     </form>
