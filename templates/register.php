@@ -2,7 +2,7 @@
     <form method="post" action="/register">
         <div class="form-group">
             <label for="email"><?= $trans("Email address"); ?></label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="<?= $trans("Enter your email address") . "..."; ?>">
+            <input class="form-control" type="email" name="email" id="email">
         </div>
         <div class="form-group">
             <label for="password"><?= $trans("Password"); ?></label>
