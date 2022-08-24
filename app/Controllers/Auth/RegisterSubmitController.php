@@ -9,6 +9,7 @@ use Session\SessionInterface;
 class RegisterSubmitController
 {
     private AuthService $authService;
+    private SessionInterface $session;
 
     public function __construct(AuthService $authService, SessionInterface $session)
     {
