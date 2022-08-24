@@ -22,6 +22,16 @@ class RegisterSubmitController
         $password = trim($_POST["password"]);
         $email = trim($_POST["email"]);
         $success = $this->authService->registerUser($email, $password);
+        if ($success){
+            $view = "redirect:/";
+        }else{
+            $this->markAsLoginFailed();
+            $view = "redirect:/login";
+        }
+        return [
+            $view,
+            []
+        ];
     }
 
     /**
