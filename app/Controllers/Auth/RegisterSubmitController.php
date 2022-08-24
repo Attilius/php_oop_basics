@@ -21,6 +21,7 @@ class RegisterSubmitController
     {
         $password = trim($_POST["password"]);
         $email = trim($_POST["email"]);
+        $success = $this->authService->registerUser($email, $password);
     }
 
     /**
