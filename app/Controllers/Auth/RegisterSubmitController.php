@@ -19,7 +19,7 @@ class RegisterSubmitController
 
     function submit()
     {
-
+        $password = trim($_POST["password"]);
     }
 
     /**
