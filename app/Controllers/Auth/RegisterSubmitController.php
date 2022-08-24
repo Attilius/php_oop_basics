@@ -16,4 +16,9 @@ class RegisterSubmitController
         $this->authService = $authService;
         $this->session = $session;
     }
+
+    private function markAsLoginFailed()
+    {
+
+    }
 }
