@@ -17,6 +17,11 @@ class RegisterSubmitController
         $this->session = $session;
     }
 
+    function submit()
+    {
+
+    }
+
     /**
      * @return void
      */
