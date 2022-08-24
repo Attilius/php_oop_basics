@@ -19,6 +19,6 @@ class RegisterSubmitController
 
     private function markAsLoginFailed()
     {
-
+        $this->session->put("containsError", 1);
     }
 }
